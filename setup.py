@@ -4,7 +4,7 @@ import sys
 
 def main():
     setup(
-        # name="check50-checks",
+        name="check50-checks",
         include_package_data=True,
         **setup50()
     )
@@ -12,8 +12,6 @@ def main():
 
 def setup50():
     if sys.version_info >= (3, 3):
-        with open("MANIFEST.in", "w") as f:
-            f.write("graft checks\n")
         return {"packages": ["checks"]}
 
     with open("checks/__init__.py", "w") as f:
