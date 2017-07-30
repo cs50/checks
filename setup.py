@@ -2,7 +2,6 @@ import os
 from setuptools import setup, find_packages
 import sys
 
-<<<<<<< HEAD
 def main():
     setup(
         # name="check50-checks",
