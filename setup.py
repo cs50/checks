@@ -1,8 +1,7 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
-    packages=["checks"],
+    packages=find_packages(),
     name="check50-checks",
-    include_package_data=True,
 )
 
