@@ -1,7 +1,7 @@
 # Testing
 
 ```
-pip install . -t check50/plugins
-find check50
+pip install . -t foo
+find foo
 rm -rf check50
 ```
