@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-    packages=["check50"],
+    packages=["checks"],
     include_package_data=True,
 )
 
