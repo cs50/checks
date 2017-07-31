@@ -1,4 +1,4 @@
-less = __import__("cs50").import_from("../../less")
+less = __import__("check50").import_from("../../less")
 from less import *
 
 
