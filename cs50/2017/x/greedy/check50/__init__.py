@@ -7,7 +7,7 @@ class Greedy(Checks):
 
     @check()
     def exists(self):
-        """greedy compiles."""
+        """greedy exists"""
         self.require("greedy.c")
 
     @check("exists")
