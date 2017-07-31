@@ -59,5 +59,5 @@ class Recover(Checks):
         """recovers 015.jpg correctly"""
         self.add("card.raw")
         self.spawn("./recover").exit(0)
-        if self.hash("015.jpg") != self.hashes[15]:
+        if self.hash("015.jpg") != self.hashes[-1]:
             raise Error("recovered image does not match")
