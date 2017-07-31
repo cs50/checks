@@ -1,9 +1,5 @@
-# # from check50 import *
-
-import sys
-import os
-sys.path.append(os.path.abspath("../../less"))
-from check50 import *
+less = __import__("imp").load_source("less", "../../less/check50/__init__.py")
+from less import *
 
 class InitialsMore(InitialsLess):
 
