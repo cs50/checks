@@ -45,9 +45,9 @@ class Greedy(Checks):
         """input of 4.2 yields output of 18"""
         expected = "18"
         actual = self.spawn("./greedy").stdin("4.2").stdout()
-        if not re.compile(coins(18)).match(out):
+        if not re.compile(coins(18)).match(actual):
             err = Error(Mismatch(expected, actual))
-            if re.compile(coins(22)).match(out):
+            if re.compile(coins(22)).match(actual)):
                 err.helpers = "Did you forget to round your input to the nearest cent?"
             raise err
 
