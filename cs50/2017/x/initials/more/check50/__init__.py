@@ -1,6 +1,9 @@
-from check50 import *
+# # from check50 import *
 
-from ..less.check50 import *
+import sys
+import os
+sys.path.append(os.path.abspath("../../less"))
+from check50 import *
 
 class InitialsMore(InitialsLess):
 
