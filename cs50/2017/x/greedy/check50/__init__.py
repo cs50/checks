@@ -18,32 +18,32 @@ class Greedy(Checks):
     @check("compiles")
     def test041(self):
         """input of 0.41 yields output of 4"""
-        self.spawn("./greedy").stdin("0.41").stdout(coins(4), 4).exit(0)
+        self.spawn("./greedy").stdin("0.41").stdout(coins(4), "4\n").exit(0)
 
     @check("compiles")
     def test001(self):
         """input of 0.01 yields output of 1"""
-        self.spawn("./greedy").stdin("0.01").stdout(coins(1), 1).exit(0)
+        self.spawn("./greedy").stdin("0.01").stdout(coins(1), "1\n").exit(0)
 
     @check("compiles")
     def test015(self):
         """input of 0.15 yields output of 2"""
-        self.spawn("./greedy").stdin("0.15").stdout(coins(2), 2).exit(0)
+        self.spawn("./greedy").stdin("0.15").stdout(coins(2), "2\n").exit(0)
 
     @check("compiles")
     def test160(self):
         """input of 1.6 yields output of 7"""
-        self.spawn("./greedy").stdin("1.6").stdout(coins(6), 6).exit(0)
+        self.spawn("./greedy").stdin("1.6").stdout(coins(7), "7\n").exit(0)
 
     @check("compiles")
     def test230(self):
         """input of 23 yields output of 92"""
-        self.spawn("./greedy").stdin("23").stdout(coins(92), 92).exit(0)
+        self.spawn("./greedy").stdin("23").stdout(coins(92), "92\n").exit(0)
 
     @check("compiles")
     def test420(self):
         """input of 4.2 yields output of 18"""
-        expected = "18"
+        expected = "18\n"
         actual = self.spawn("./greedy").stdin("4.2").stdout()
         if not re.compile(coins(18)).match(actual):
             err = Error(Mismatch(expected, actual))
