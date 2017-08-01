@@ -11,7 +11,7 @@ class Caesar(Checks):
     @check("exists")
     def compiles(self):
         """caesar.c compiles."""
-        self.spawn("clang -o caesar caesar.c -lcs50").exit(0)
+        self.spawn("clang -o caesar caesar.c -lcs50 -lm").exit(0)
 
     @check("compiles")
     def encrypts_a_as_b(self):

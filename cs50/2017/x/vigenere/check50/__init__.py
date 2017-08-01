@@ -11,7 +11,7 @@ class Vigenere(Checks):
     @check("exists")
     def compiles(self):
         """vigenere.c compiles."""
-        self.spawn("clang -o vigenere vigenere.c -lcs50").exit(0)
+        self.spawn("clang -o vigenere vigenere.c -lcs50 -lm").exit(0)
 
     @check("compiles")
     def aa(self):

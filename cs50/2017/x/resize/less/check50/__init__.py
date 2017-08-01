@@ -19,7 +19,7 @@ class ResizeLess(Checks):
     @check("exists")
     def compiles(self):
         """resize.c compiles."""
-        self.spawn("clang -o resize resize.c -lcs50").exit(0)
+        self.spawn("clang -o resize resize.c -lm -lcs50").exit(0)
 
     @check("compiles")
     def scale_by_1(self):

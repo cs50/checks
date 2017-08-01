@@ -11,7 +11,7 @@ class InitialsLess(Checks):
     @check("exists")
     def compiles(self):
         """initials.c compiles."""
-        self.spawn("clang -o initials initials.c -lcs50").exit(0)
+        self.spawn("clang -o initials initials.c -lcs50 -lm").exit(0)
 
     @check("compiles")
     def uppercase(self):
