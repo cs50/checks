@@ -65,7 +65,7 @@ class ResizeLess(Checks):
     def scale_6_to_12(self):
         """resizes 6x6-pixel BMP to 12x12 correctly when n is 2"""
         self.add("6x6.bmp")
-        self.spawn("./resize 2 6x6 outfile.bmp").exit(0)
+        self.spawn("./resize 2 6x6.bmp outfile.bmp").exit(0)
         if self.hash("outfile.bmp") != self.hashes["12x12.bmp"]:
             raise Error("resized image does not match expected image")
 
