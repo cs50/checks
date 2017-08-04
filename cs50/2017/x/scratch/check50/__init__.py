@@ -107,8 +107,8 @@ class Scratch(Checks):
 def project_contains_keywords(project, keywords):
     """Returns True if project contains at least one of the keywords."""
 
-    # Iterate over all sprites and backdrops.
-    for child in project["children"]:
+    # Iterate over all sprites and backdrops, and the project itself.
+    for child in project["children"] + [project]:
 
         # Perform a DFS on each script looking for keywords.
         if any(contains(script, keywords) for script in child.get("scripts", [])):
