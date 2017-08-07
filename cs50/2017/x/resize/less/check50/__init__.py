@@ -14,7 +14,8 @@ class ResizeLess(Checks):
     @check()
     def exists(self):
         """resize.c and bmp.h exist."""
-        self.require("resize.c", "bmp.h")
+        self.add("bmp.h")
+        self.require("resize.c")
 
     @check("exists")
     def compiles(self):

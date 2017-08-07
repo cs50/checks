@@ -1,6 +1,4 @@
 *
-!bmp.h
 !resize.c
 !Makefile
-#bmp.h
 #resize.c
