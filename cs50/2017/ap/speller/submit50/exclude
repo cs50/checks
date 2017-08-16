@@ -1,0 +1,10 @@
+*
+!*.c
+!*.h
+!questions.txt
+!Makefile
+#dictionary.c
+#dictionary.h
+#questions.txt
+#speller.c
+#Makefile
