@@ -88,7 +88,7 @@ class Scratch(Checks):
             return
 
         # Look for local-to-sprite variables.
-        if not any(child.get("variables") for child in project["children"]):
+        if any(child.get("variables") for child in project["children"]):
             return
 
         # If we've reached this point, no variable found.
