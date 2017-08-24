@@ -1,3 +1,6 @@
 *
+!house.doc
+!house.docx
+!house.pdf
 !house.txt
-#house.txt
+#house.(doc, docx, pdf, txt)

@@ -1,3 +1,6 @@
 *
+!tech.doc
+!tech.docx
+!tech.pdf
 !tech.txt
-#tech.txt
+#tech.(doc, docx, pdf, txt)

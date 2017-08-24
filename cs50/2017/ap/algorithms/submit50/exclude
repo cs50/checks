@@ -1,3 +1,6 @@
 *
+!algorithms.doc
+!algorithms.docx
+!algorithms.pdf
 !algorithms.txt
-#algorithms.txt
+#algorithms.(doc, docx, pdf, txt)
