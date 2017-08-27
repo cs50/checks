@@ -28,6 +28,7 @@ class Finance(Checks):
 
     @helper
     def validate_form(self, route, fields):
+        """Make sure HTML form at `route` has input fields given by `fields`"""
         if not isinstance(fields, list):
             fields = [fields]
 
