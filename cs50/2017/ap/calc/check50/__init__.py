@@ -16,12 +16,12 @@ class Calc(Checks):
     @check("compiles")
     def test_handles_addition(self):
         """calculator handles addition"""
-        self.spawn("./calc 3 + 4").stdout(number(7.000000), "7.000000\n").exit(0)
+        self.spawn("./calc 3 + 4").stdout(number("7.000000"), "7.000000\n").exit(0)
 
     @check("compiles")
     def test_handles_subtraction(self):
         """calculator handles subtraction"""
-        self.spawn("./calc 10.5 - 6.2").stdout(number(4.300000), "4.300000\n").exit(0)
+        self.spawn("./calc 10.5 - 6.2").stdout(number("4.300000"), "4.300000\n").exit(0)
 
     @check("compiles")
     def test_handles_division(self):
@@ -36,12 +36,12 @@ class Calc(Checks):
     @check("compiles")
     def test_handles_modulo(self):
         """calculator handles modulo of integers"""
-        self.spawn("./calc 8 % 5").stdout(number(3.000000), "3.000000\n").exit(0)
+        self.spawn("./calc 8 % 5").stdout(number("3.000000"), "3.000000\n").exit(0)
 
     @check("compiles")
     def test_handles_modulo2(self):
         """calculator handles modulo of real numbers"""
-        self.spawn("./calc 8.1 % 4.9").stdout(number(3.200000), "3.200000\n").exit(0)
+        self.spawn("./calc 8.1 % 4.9").stdout(number("3.200000"), "3.200000\n").exit(0)
 
     @check("compiles")
     def test_handles_bad_operation(self):
