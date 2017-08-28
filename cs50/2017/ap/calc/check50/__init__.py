@@ -46,7 +46,7 @@ class Calc(Checks):
     @check("compiles")
     def test_handles_bad_operation(self):
         """handles invalid operation"""
-        self.spawn("./calc 11 J 8").reject()
+        self.spawn("./calc 11 J 8").exit(1)
 
     @check("compiles")
     def test_argc_1(self):
