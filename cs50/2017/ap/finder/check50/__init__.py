@@ -26,39 +26,39 @@ class Finder(Checks):
     @check("compiles")
     def test_cats(self):
         """finds cats in cats.txt"""
-        self.add("foo"), self.add("bar"), self.add("this"), self.add("cats.txt"), self.add("dogs.txt"), self.add("001.txt")
+        self.add("foo", "bar", "this", "cats.txt", "dogs.txt", "001.txt")
         self.spawn("./finder cats").exit()
-        if self.diff("001.txt", "found.txt") == False:
+        if not self.diff("001.txt", "found.txt"):
             raise Error("did not find all instances of cats")
 
     @check("compiles")
     def test_foo1(self):
         """finds foo with argc == 2"""
-        self.add("foo"), self.add("bar"), self.add("this"), self.add("cats.txt"), self.add("dogs.txt"), self.add("002.txt")
+        self.add("foo", "bar", "this", "cats.txt", "dogs.txt", "002.txt")
         self.spawn("./finder foo").exit()
-        if self.diff("002.txt", "found.txt") == False:
+        if not self.diff("002.txt", "found.txt"):
             raise Error("did not find all instances of foo")
 
     @check("compiles")
     def test_foo2(self):
         """finds foo with argc == 3"""
-        self.add("foo"), self.add("bar"), self.add("this"), self.add("cats.txt"), self.add("dogs.txt"), self.add("003.txt")
+        self.add("foo", "bar", "this", "cats.txt", "dogs.txt", "003.txt")
         self.spawn("./finder foo ./").exit()
-        if self.diff("003.txt", "found.txt") == False:
+        if not self.diff("003.txt", "found.txt"):
             raise Error("did not find all instances of foo")
 
     @check("compiles")
     def test_foo3(self):
         """finds foo in foo/"""
-        self.add("foo"), self.add("bar"), self.add("this"), self.add("cats.txt"), self.add("dogs.txt"),self.add("004.txt")
+        self.add("foo", "bar", "this", "cats.txt", "dogs.txt", "004.txt")
         self.spawn("./finder foo foo/").exit()
-        if self.diff("004.txt", "found.txt") == False:
+        if not self.diff("004.txt", "found.txt"):
             raise Error("did not find all instances of foo")
 
     @check("compiles")
     def test_common(self):
         """finds common starting at ./"""
-        self.add("foo"), self.add("bar"), self.add("this"), self.add("cats.txt"), self.add("dogs.txt"), self.add("005.txt")
+        self.add("foo", "bar", "this", "cats.txt", "dogs.txt", "005.txt")
         self.spawn("./finder common").exit()
-        if self.diff("005.txt", "found.txt") == False:
+        if not self.diff("005.txt", "found.txt"):
             raise Error("did not find all instances of common")
