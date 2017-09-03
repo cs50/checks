@@ -66,7 +66,7 @@ class Scratch(Checks):
         project = json.loads(File("project.json").read())
 
         # Search project scripts for an if or if/else block.
-        if not project_contains_keywords(project, ["doIf", "doIfElse"]):
+        if not project_contains_keywords(project, ["doIf", "doIfElse", "doUntil"]):
             raise Error("No conditions found, 1 required.")
 
     @check("valid")
