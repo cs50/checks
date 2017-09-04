@@ -1,3 +1,2 @@
 *
-!project.sb2
-#project.sb2
+!*.sb2
