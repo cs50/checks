@@ -20,7 +20,8 @@ class Scratch(Checks):
         filename = filenames[0]
 
         # Ensure that unzipped .sb2 file contains .json file.
-        self.spawn("unzip {}".format(shlex.quote(filename))).exit()
+        if self.spawn("unzip {}".format(shlex.quote(filename))).exit():
+            raise Error("Invalid .sb2 file.")
         self.require("project.json")
 
     @check("valid")
