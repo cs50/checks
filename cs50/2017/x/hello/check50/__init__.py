@@ -12,7 +12,7 @@ class Hello(Checks):
     @check("exists")
     def compiles(self):
         """hello.c compiles."""
-        self.spawn("clang -o hello hello.c").exit(0)
+        self.spawn("clang -std=c11 -o hello hello.c").exit(0)
 
     @check("compiles")
     def prints_hello(self):

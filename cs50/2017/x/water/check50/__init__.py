@@ -11,7 +11,7 @@ class Water(Checks):
     @check("exists")
     def compiles(self):
         """water.c compiles."""
-        self.spawn("clang -o water water.c -lcs50 -lm").exit(0)
+        self.spawn("clang -std=c11 -o water water.c -lcs50 -lm").exit(0)
 
     @check("compiles")
     def test1(self):

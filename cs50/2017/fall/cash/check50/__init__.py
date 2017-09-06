@@ -13,7 +13,7 @@ class Cash(Checks):
     @check("exists")
     def compiles(self):
         """cash compiles"""
-        self.spawn("clang -ggdb3 -o cash cash.c -lcs50 -lm").exit(0)
+        self.spawn("clang -std=c11 -o cash cash.c -lcs50 -lm").exit(0)
 
     @check("compiles")
     def test041(self):

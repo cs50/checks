@@ -13,7 +13,7 @@ class FindLess(Checks):
         """helpers.c compiles."""
         self.add("helpers.h")
         self.add("find.c")
-        self.spawn("clang -ggdb3 -O0 -std=c99 -Wall -o find find.c helpers.c -lcs50 -lm").exit(0)
+        self.spawn("clang -std=c11 -o find find.c helpers.c -lcs50 -lm").exit(0)
 
     @check("compiles")
     def first_among_three(self):

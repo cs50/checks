@@ -11,7 +11,7 @@ class Fahrenheit(Checks):
     @check("exists")
     def compiles(self):
         """fahrenheit.c compiles"""
-        self.spawn("clang -o fahrenheit fahrenheit.c -lcs50 -lm").exit(0)
+        self.spawn("clang -std=c11 -o fahrenheit fahrenheit.c -lcs50 -lm").exit(0)
 
     @check("compiles")
     def test37(self):

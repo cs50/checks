@@ -13,7 +13,7 @@ class MarioLess(Checks):
     @check("exists")
     def compiles(self):
         """mario.c compiles."""
-        self.spawn("clang -o mario mario.c -lcs50 -lm").exit(0)
+        self.spawn("clang -std=c11 -o mario mario.c -lcs50 -lm").exit(0)
 
     @check("compiles")
     def test_reject_negative(self):

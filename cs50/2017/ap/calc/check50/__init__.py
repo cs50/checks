@@ -11,7 +11,7 @@ class Calc(Checks):
     @check("exists")
     def compiles(self):
         """calc.c compiles"""
-        self.spawn("clang -o calc calc.c -lcs50 -lm").exit(0)
+        self.spawn("clang -std=c11 -o calc calc.c -lcs50 -lm").exit(0)
 
     @check("compiles")
     def test_handles_addition(self):

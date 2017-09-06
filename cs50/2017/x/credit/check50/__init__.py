@@ -11,7 +11,7 @@ class Credit(Checks):
     @check("exists")
     def compiles(self):
         """credit.c compiles."""
-        self.spawn("clang -o credit credit.c -lcs50 -lm").exit(0)
+        self.spawn("clang -std=c11 -o credit credit.c -lcs50 -lm").exit(0)
 
     @check("compiles")
     def test1(self):

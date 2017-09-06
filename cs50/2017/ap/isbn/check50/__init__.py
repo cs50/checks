@@ -11,7 +11,7 @@ class isbn(Checks):
     @check("exists")
     def compiles(self):
         """isbn.c compiles"""
-        self.spawn("clang -o isbn isbn.c -lcs50 -lm").exit(0)
+        self.spawn("clang -std=c11 -o isbn isbn.c -lcs50 -lm").exit(0)
 
     @check("compiles")
     def Absolute_Beginners_Guide(self):
