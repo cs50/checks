@@ -1,3 +1,5 @@
+import re
+
 from check50 import *
 
 class Hello(Checks):
@@ -14,11 +16,11 @@ class Hello(Checks):
 
     @check("compiles")
     def prints_hello(self):
-        """prints "Hello, world!\\n" """
-        expected = "Hello, world!\n"
+        """prints "hello, world\\n" """
+        expected = "[Hh]ello, world!?\n"
         actual = self.spawn("./hello").stdout()
-        if expected != actual:
-            err = Error(Mismatch(expected, actual))
-            if actual == "Hello, world!":
+        if not re.match(expected, actual):
+            err = Error(Mismatch("hello, world\n", actual))
+            if re.match(expected[:-1], actual):
                 err.helpers = "Did you forget a newline (\"\\n\") at the end of your printf string?"
             raise err
