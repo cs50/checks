@@ -1,4 +1,8 @@
 *
 !.py
-!static
-!templates
+#application.py
+!*.html
+!*.css
+!*.db
+!static/*
+!templates/*
