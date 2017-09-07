@@ -141,7 +141,7 @@ class Finance(Checks):
     def quote_handles_valid(self):
         """quote handles valid ticker symbol"""
         self.login("cs50", "ohhai")
-        self.quote("AAAA").status(200).content(r"28.00", name="body")
+        self.quote("AAAA").status(200).content(r"28\.00", "28.00", name="body")
 
     @check("can_login")
     def buy_page(self):
@@ -167,7 +167,7 @@ class Finance(Checks):
     def buy_handles_valid(self):
         """buy handles valid purchase"""
         self.login("cs50", "ohhai")
-        self.transaction("/buy", "AAAA", "4").content(r"112.00").content(r"9,?888\.00", "9,888.00")
+        self.transaction("/buy", "AAAA", "4").content(r"112\.00", "112.00").content(r"9,?888\.00", "9,888.00")
 
     @check("can_login")
     def sell_page(self):
@@ -185,4 +185,4 @@ class Finance(Checks):
     def sell_handles_valid(self):
         """sell handles valid sale"""
         self.login("cs50", "ohhai")
-        self.transaction("/sell", "AAAA", "2").content("56.00").content(r"9,?944\.00", "9,944.00")
+        self.transaction("/sell", "AAAA", "2").content("56\.00", "56.00").content(r"9,?944\.00", "9,944.00")
