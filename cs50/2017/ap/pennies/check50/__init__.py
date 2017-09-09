@@ -11,7 +11,7 @@ class Pennies(Checks):
     @check("exists")
     def compiles(self):
         """pennies.c compiles"""
-        self.spawn("clang -o pennies pennies.c -lcs50 -lm").exit(0)
+        self.spawn("clang -std=c11 -o pennies pennies.c -lcs50 -lm").exit(0)
 
     @check("compiles")
     def test28days1penny(self):

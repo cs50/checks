@@ -29,7 +29,7 @@ class Recover(Checks):
     @check("exists")
     def compiles(self):
         """recover.c compiles."""
-        self.spawn("clang -o recover recover.c -lcs50 -lm").exit(0)
+        self.spawn("clang -std=c11 -o recover recover.c -lcs50 -lm").exit(0)
 
     @check("compiles")
     def test_noimage(self):

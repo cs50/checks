@@ -13,7 +13,7 @@ class Greedy(Checks):
     @check("exists")
     def compiles(self):
         """greedy compiles"""
-        self.spawn("clang -ggdb3 -o greedy greedy.c -lcs50 -lm").exit(0)
+        self.spawn("clang -std=c11 -ggdb3 -o greedy greedy.c -lcs50 -lm").exit(0)
 
     @check("compiles")
     def test041(self):

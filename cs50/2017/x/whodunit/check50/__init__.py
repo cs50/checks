@@ -12,7 +12,7 @@ class Whodunit(Checks):
     def compiles(self):
         """whodunit.c compiles"""
         self.add("bmp.h")
-        self.spawn("clang -std=c99 -Wall -Werror whodunit.c -o whodunit -lm").exit(0)
+        self.spawn("clang -std=c11 whodunit.c -o whodunit -lm").exit(0)
 
     @check("compiles")
     def different(self):

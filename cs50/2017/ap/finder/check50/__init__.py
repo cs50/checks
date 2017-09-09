@@ -11,7 +11,7 @@ class Finder(Checks):
     @check("exists")
     def compiles(self):
         """finder.c compiles"""
-        self.spawn("clang -o finder finder.c -lcs50 -lm").exit(0)
+        self.spawn("clang -std=c11 -o finder finder.c -lcs50 -lm").exit(0)
 
     @check("compiles")
     def test_handles_lack_of_arguments(self):
