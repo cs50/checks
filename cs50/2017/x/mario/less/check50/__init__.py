@@ -8,7 +8,7 @@ class MarioLess(Checks):
     def exists(self):
         """mario.c exists."""
         self.require("mario.c")
-        self.add("0.txt", "1.txt", "2.txt", "23.txt")
+        self.add("1.txt", "2.txt", "23.txt")
 
     @check("exists")
     def compiles(self):
@@ -23,7 +23,7 @@ class MarioLess(Checks):
     @check("compiles")
     def test0(self):
         """handles a height of 0 correctly"""
-        self.spawn("./mario").stdin("0").stdout(File("0.txt")).exit(0)
+        self.spawn("./mario").stdin("0").stdout(EOF).exit(0)
 
     @check("compiles")
     def test1(self):
