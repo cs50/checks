@@ -146,7 +146,7 @@ class Music(Checks):
 
     @check("compiles")
     def frequencies(self):
-        """produces all correct notes for octaves 4-6"""
+        """produces all correct notes for octaves 3-5"""
         self.add("frequencies.txt")
         actual = open("frequencies.txt").read().splitlines()
         for line in actual:
