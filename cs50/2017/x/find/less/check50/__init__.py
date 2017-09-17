@@ -56,6 +56,16 @@ class FindLess(Checks):
         self.spawn("./find 28").stdin("25").stdin("26").stdin("27").stdin("29").stdin(EOF).exit(1)
 
     @check("compiles")
+    def needle_too_low_four(self):
+        """doesn't find 28 in {29,30,31,32}"""
+        self.spawn("./find 28").stdin("29").stdin("30").stdin("31").stdin("32").stdin(EOF).exit(1)
+
+    @check("compiles")
+    def needle_too_low_three(self):
+        """doesn't find 28 in {29, 30, 31}"""
+        self.spawn("./find 28").stdin("29").stdin("30").stdin("31").stdin(EOF).exit(1)
+
+    @check("compiles")
     def correctly_sorts(self):
         """finds 28 in {30,27,28,26}"""
         self.spawn("./find 28").stdin("30").stdin("27").stdin("28").stdin("26").stdin(EOF).exit(0)
