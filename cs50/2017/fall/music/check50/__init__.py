@@ -35,7 +35,10 @@ class Music(Checks):
                     "D4@1/8", "D4@1/8", "D5@1/4", "B4@1/4", "G4@1/4", "F#4@1/4",
                     "E4@1/4", "C5@1/8", "C5@1/8", "B4@1/4", "G4@1/4", "A4@1/4",
                     "G4@1/2"]
-        bday = open("bday.txt").read().splitlines()
+        try:
+            bday = open("bday.txt").read().splitlines()
+        except Exception:
+            raise Error("bday.txt is not valid text file.")
             
         # Check length of song.
         if len(solution) > len(bday):
