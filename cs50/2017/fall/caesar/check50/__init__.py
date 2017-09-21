@@ -39,6 +39,11 @@ class Caesar(Checks):
         self.spawn("./caesar 65").stdin("barfoo").stdout("ciphertext:\s*onesbb\n", "ciphertext: onesbb\n").exit(0)
 
     @check("compiles")
+    def checks_for_handling_non_alpha(self):
+        """encrypts "world, say hello!" as "iadxp, emk tqxxa!" using 12 as key"""
+        self.spawn("./caesar 12").stdin("world, say hello!").stdout("ciphertext:\s*iadxp, emk tqxxa!\n", "ciphertext: iadxp, emk tqxxa!\n").exit(0)
+
+    @check("compiles")
     def handles_no_argv(self):
         """handles lack of argv[1]"""
         self.spawn("./caesar").exit(1)
