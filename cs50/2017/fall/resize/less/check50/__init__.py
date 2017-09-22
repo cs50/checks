@@ -61,8 +61,8 @@ class ResizeLess(Checks):
             if expected_byte != actual_byte:
                 expected_file.close()
                 actual_file.close()
-                raise Error("Byte {} of image data doesn't match. Expected {}, not {}".format(
-                    byte_count, expected_byte, actual_byte))
+                raise Error("Byte {} of image data doesn't match. Expected 0x{}, not 0x{}".format(
+                    byte_count, expected_byte.hex(), actual_byte.hex()))
         
         # Close files.
         expected_file.close()
