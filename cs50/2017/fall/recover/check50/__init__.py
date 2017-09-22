@@ -89,7 +89,7 @@ class Recover(Checks):
 
     @check("compiles")
     def last_image(self):
-        """recovers 015.jpg correctly"""
+        """recovers 049.jpg correctly"""
         self.add("card.raw")
         self.spawn("./recover card.raw").exit(0)
         if self.hash("049.jpg") != self.hashes[-1]:
