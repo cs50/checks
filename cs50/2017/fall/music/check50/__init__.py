@@ -6,16 +6,16 @@ class Music(Checks):
     def exists(self):
         """bday.txt and helpers.c exist"""
 
-        # Ensure student files exist.
+        # Ensure student files exist
         self.require("bday.txt")
         self.require("helpers.c")
 
-        # Include distribution code.
+        # Include distribution code
         self.add("helpers.h")
         self.add("wav.h")
         self.add("wav.c")
 
-        # Include testing code.
+        # Include testing code
         self.add("is_rest.c")
         self.add("duration.c")
         self.add("frequency.c")
@@ -38,15 +38,13 @@ class Music(Checks):
         try:
             bday = open("bday.txt").read().splitlines()
         except Exception:
-            raise Error("bday.txt is not valid text file.")
-            
-        # Check length of song.
-        if len(solution) > len(bday):
-            raise Error("Song contains fewer notes than expected.")
-        elif len(solution) < len(bday):
-            raise Error("Song contains more notes than expected.")
-        
-        # Make sure each note matches.
+            raise Error("bday.txt is not valid text file")
+
+        # Check length of song
+        if len(solution) != len(bday):
+            raise Error("Expected {} lines in bday.txt, but yours has {}".format(len(solution), len(bday)))
+
+        # Make sure each note matches
         note = 1
         for expected, actual in zip(solution, bday):
             if expected != actual:
