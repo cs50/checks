@@ -1,4 +1,7 @@
 import json
+import os
+import shlex
+
 from check50 import *
 
 
@@ -7,10 +10,18 @@ class Scratch(Checks):
     @check()
     def valid(self):
         """project exists and is valid Scratch program"""
-        self.require("project.sb2")
 
-        # Ensure that unzipped .sb2 file contains .json file
-        self.spawn("unzip project.sb2").exit()
+        # Make sure there is only one .sb2 file.
+        filenames = list(filter(lambda filename: filename.endswith(".sb2"), os.listdir()))
+        if len(filenames) > 1:
+            raise Error("More than one .sb2 file found. Make sure there's only one!")
+        elif len(filenames) == 0:
+            raise Error("No .sb2 file found.")
+        filename = filenames[0]
+
+        # Ensure that unzipped .sb2 file contains .json file.
+        if self.spawn("unzip {}".format(shlex.quote(filename))).exit():
+            raise Error("Invalid .sb2 file.")
         self.require("project.json")
 
     @check("valid")
