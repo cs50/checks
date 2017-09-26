@@ -21,11 +21,11 @@ class Challenge(Checks):
         self.spawn("clang -ggdb3 -O0 -Qunused-arguments -std=c11 -Wall -Werror -o timer timer.o dictionary.o").exit(0)
 
     @check("compiles")
-    # TODO: add valgrind back
-    # @valgrind
+    @valgrind
     def qualifies(self):
         """qualifies for Big Board"""
         self.spawn("./speller dictionaries/large texts/kjv.txt").stdout(File("sols/kjv.txt"), timeout=10).exit(0)
+        self.log = []
 
     @check("qualifies")
     def benchmark(self):
