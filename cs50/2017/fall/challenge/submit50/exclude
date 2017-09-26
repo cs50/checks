@@ -1,5 +1,5 @@
 *
-!*.c
-!*.h
+!dictionary.c
+!dictionary.h
 #dictionary.c
 #dictionary.h
