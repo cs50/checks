@@ -24,7 +24,11 @@ class Challenge(Checks):
     @valgrind
     def qualifies(self):
         """qualifies for Big Board"""
-        self.spawn("./speller dictionaries/large texts/kjv.txt").stdout(File("sols/kjv.txt"), timeout=10).exit(0)
+        try:
+            self.spawn("./speller dictionaries/large texts/kjv.txt").stdout(File("sols/kjv.txt"), timeout=10).exit(0)
+        except Error as e:
+            self.log = []
+            raise e
         self.log = []
 
     @check("qualifies")
