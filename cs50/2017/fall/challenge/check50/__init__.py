@@ -21,11 +21,23 @@ class Challenge(Checks):
         self.spawn("clang -ggdb3 -O0 -Qunused-arguments -std=c11 -Wall -Werror -o timer timer.o dictionary.o").exit(0)
 
     @check("compiles")
-    @valgrind
     def qualifies(self):
         """qualifies for Big Board"""
         try:
-            self.spawn("./speller dictionaries/large texts/kjv.txt").stdout(File("sols/kjv.txt"), timeout=10).exit(0)
+
+            # Run on kjv.txt
+            self.spawn("./speller dictionaries/large texts/kjv.txt > actual.out").exit(0, timeout=20)
+            actual = open("actual.out").read().splitlines()
+            expected = open("sols/kjv.txt").read().splitlines()
+
+            # Compare output line for line.
+            if len(actual) != len(expected):
+                raise Error("{} lines expected, not {}".format(len(expected), len(actual)))
+            for actual_line, expected_line in zip(actual, expected):
+                if actual_line != expected_line:
+                    raise Error("expected {}, not {}".format(expected_line, actual_line))
+
+        # Clear log to avoid clutter.
         except Error as e:
             self.log = []
             raise e
@@ -43,7 +55,7 @@ class Challenge(Checks):
             "unload": 0.0
         }
         for text in os.listdir("texts"):
-            out = self.spawn("./timer dictionaries/large texts/{}".format(text)).stdout(timeout=10)
+            out = self.spawn("./timer dictionaries/large texts/{}".format(text)).stdout(timeout=20)
             load, check, size, unload = map(float, out.split())
             self.data["time"]["load"] += load
             self.data["time"]["check"] += check 
@@ -54,7 +66,7 @@ class Challenge(Checks):
 
 
         # Memory data.
-        self.spawn("valgrind --tool=massif --heap=yes --stacks=yes --massif-out-file=massif.out ./speller dictionaries/large texts/holmes.txt").stdout(timeout=10)
+        self.spawn("valgrind --tool=massif --heap=yes --stacks=yes --massif-out-file=massif.out ./speller dictionaries/large texts/holmes.txt").stdout(timeout=20)
         f = open("massif.out")
     
         heap = 0
