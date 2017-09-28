@@ -73,7 +73,7 @@ class Recover(Checks):
     def first_image(self):
         """recovers 000.jpg correctly"""
         self.add("card.raw")
-        self.spawn("./recover card.raw").exit(0)
+        self.spawn("./recover card.raw").exit(0, timeout=10)
         if self.hash("000.jpg") != self.hashes[0]:
             raise Error("recovered image does not match")
 
@@ -81,7 +81,7 @@ class Recover(Checks):
     def middle_images(self):
         """recovers middle images correctly"""
         self.add("card.raw")
-        self.spawn("./recover card.raw").exit(0)
+        self.spawn("./recover card.raw").exit(0, timeout=10)
 
         for i, hash in enumerate(self.hashes[1:-1], 1):
             if hash != self.hash("{:03d}.jpg".format(i)):
@@ -91,6 +91,6 @@ class Recover(Checks):
     def last_image(self):
         """recovers 049.jpg correctly"""
         self.add("card.raw")
-        self.spawn("./recover card.raw").exit(0)
+        self.spawn("./recover card.raw").exit(0, timeout=10)
         if self.hash("049.jpg") != self.hashes[-1]:
             raise Error("recovered image does not match")
