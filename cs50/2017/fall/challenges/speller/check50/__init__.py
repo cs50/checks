@@ -25,10 +25,10 @@ class Challenge(Checks):
         """qualifies for Big Board"""
         try:
 
-            # Run on kjv.txt
-            self.spawn("./speller dictionaries/large texts/kjv.txt > actual.out").exit(0, timeout=20)
+            # Run on aca.txt
+            self.spawn("./speller dictionaries/large texts/aca.txt > actual.out").exit(0, timeout=20)
             actual = open("actual.out").read().splitlines()
-            expected = open("sols/kjv.txt").read().splitlines()
+            expected = open("sols/aca.txt").read().splitlines()
 
             # Compare output line for line.
             if len(actual) != len(expected):
