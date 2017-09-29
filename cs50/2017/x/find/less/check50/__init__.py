@@ -13,6 +13,8 @@ class FindLess(Checks):
         """helpers.c compiles."""
         self.add("helpers.h")
         self.add("find.c")
+        self.add("sort.c")
+        self.spawn("clang -std=c11 -o sort sort.c helpers.c -lcs50 -lm").exit(0)
         self.spawn("clang -std=c11 -o find find.c helpers.c -lcs50 -lm").exit(0)
 
     def test_sorted(self, items):
@@ -27,11 +29,9 @@ class FindLess(Checks):
     @check("compiles")
     def sort_reversed(self):
         """sorts {5,4,3,2,1}"""
-        self.add("sort.c")
-        self.spawn("clang -std=c11 -o sort sort.c helpers.c -lcs50 -lm").exit(0)
         self.test_sorted([5, 4, 3, 2, 1])
 
-    @check("sort_reversed")
+    @check("compiles")
     def sort_shuffled(self):
         """sorts {10,-6,4,8,7,-3}"""
         self.test_sorted([10, -6, 4, 8, 7, -3])
