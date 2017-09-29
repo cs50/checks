@@ -75,4 +75,6 @@ def check_pyramid(output, correct):
     # check if pyramids are the same height and only differ by trailing whitespace
     if len(output) == len(correct) and all(ol.rstrip() == cl for ol, cl in zip(output, correct)):
         err.helpers = "Did you add too much trailing whitespace to the end of your pyramid?"
+    elif len(output) == len(correct) and all(ol.lstrip() == cl for ol, cl in zip(output, correct)):
+        err.helpers = "Are you printing additional whitespaces before each line?"
     raise err
