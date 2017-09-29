@@ -13,7 +13,28 @@ class FindLess(Checks):
         """helpers.c compiles."""
         self.add("helpers.h")
         self.add("find.c")
+        self.add("sort.c")
+        self.spawn("clang -std=c11 -o sort sort.c helpers.c -lcs50 -lm").exit(0)
         self.spawn("clang -std=c11 -o find find.c helpers.c -lcs50 -lm").exit(0)
+
+    def test_sorted(self, items):
+        p = self.spawn("./sort")
+        for i in items:
+            p.stdin(str(i))
+        p.stdin(EOF)
+        for i in sorted(items):
+            p.stdout(str(i))
+        p.exit(0)
+
+    @check("compiles")
+    def sort_reversed(self):
+        """sorts {5,4,3,2,1}"""
+        self.test_sorted([5, 4, 3, 2, 1])
+
+    @check("compiles")
+    def sort_shuffled(self):
+        """sorts {10,-6,4,8,7,-3}"""
+        self.test_sorted([10, -6, 4, 8, 7, -3])
 
     @check("compiles")
     def first_among_three(self):
