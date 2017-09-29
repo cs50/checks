@@ -1,0 +1,9 @@
+*
+!Makefile  
+!helpers.c  
+!helpers.h  
+!race.o
+#Makefile  
+#helpers.c  
+#helpers.h  
+#race.o
