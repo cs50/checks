@@ -33,8 +33,8 @@ class FindLess(Checks):
 
     @check("compiles")
     def sort_shuffled(self):
-        """sorts {10,-6,4,8,7,-3}"""
-        self.test_sorted([10, -6, 4, 8, 7, -3])
+        """sorts {10,6,4,8,7,3}"""
+        self.test_sorted([10, 6, 4, 8, 7, 3])
 
     @check("compiles")
     def first_among_three(self):
