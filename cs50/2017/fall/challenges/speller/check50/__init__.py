@@ -8,17 +8,13 @@ class Challenge(Checks):
     @check()
     def exists(self):
         """dictionary.c and dictionary.h exist"""
-        self.require("dictionary.c", "dictionary.h")
-        self.add("speller.c", "timer.c", "dictionaries", "texts", "sols")
+        self.require("dictionary.c", "dictionary.h", "Makefile")
+        self.add("speller.c", "dictionaries", "texts", "sols")
 
     @check("exists")
     def compiles(self):
-        """dictionary.c compiles"""
-        self.spawn("clang -ggdb3 -O0 -Qunused-arguments -std=c11 -Wall -Werror -c -o speller.o speller.c").exit(0)
-        self.spawn("clang -ggdb3 -O0 -Qunused-arguments -std=c11 -Wall -Werror -c -o dictionary.o dictionary.c").exit(0)
-        self.spawn("clang -ggdb3 -O0 -Qunused-arguments -std=c11 -Wall -Werror -o speller speller.o dictionary.o").exit(0)
-        self.spawn("clang -ggdb3 -O0 -Qunused-arguments -std=c11 -Wall -Werror -c -o timer.o timer.c").exit(0)
-        self.spawn("clang -ggdb3 -O0 -Qunused-arguments -std=c11 -Wall -Werror -o timer timer.o dictionary.o").exit(0)
+        """speller.c compiles"""
+        self.spawn("make").exit(0)
 
     @check("compiles")
     def qualifies(self):
@@ -26,7 +22,7 @@ class Challenge(Checks):
         try:
 
             # Run on aca.txt
-            self.spawn("./speller dictionaries/large texts/aca.txt > actual.out").exit(0, timeout=20)
+            self.spawn("./speller dictionaries/large texts/aca.txt 0 > actual.out").exit(0, timeout=20)
             actual = open("actual.out").read().splitlines()
             expected = open("sols/aca.txt").read().splitlines()
 
@@ -55,7 +51,7 @@ class Challenge(Checks):
             "unload": 0.0
         }
         for text in os.listdir("texts"):
-            out = self.spawn("./timer dictionaries/large texts/{}".format(text)).stdout(timeout=20)
+            out = self.spawn("./speller dictionaries/large texts/{} 1".format(text)).stdout(timeout=20)
             load, check, size, unload = map(float, out.split())
             self.data["time"]["load"] += load
             self.data["time"]["check"] += check 
