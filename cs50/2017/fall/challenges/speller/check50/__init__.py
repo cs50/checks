@@ -13,7 +13,7 @@ class Challenge(Checks):
 
     @check("exists")
     def compiles(self):
-        """speller.c compiles"""
+        """speller compiles"""
         self.spawn("make").exit(0)
 
     @check("compiles")
