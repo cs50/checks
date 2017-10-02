@@ -17,6 +17,7 @@ class Challenge(Checks):
         self.spawn("make").exit(0)
 
     @check("compiles")
+    @valgrind
     def qualifies(self):
         """qualifies for Big Board"""
         try:
