@@ -25,7 +25,7 @@ class Challenge(Checks):
 
             # inject canary
             canary = uuid.uuid4()
-            self.spawn("sed -i 's/CANARY/{}/' speller.c".format(canary).exit(0)
+            self.spawn("sed -i 's/CANARY/{}/' speller.c".format(canary)).exit(0)
             self.spawn("make").exit(0)
 
             # Run on aca.txt
