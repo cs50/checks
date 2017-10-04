@@ -175,6 +175,7 @@ int main(int argc, char *argv[])
         printf("\nWORDS MISSPELLED:     %d\n", misspellings);
         printf("WORDS IN DICTIONARY:  %d\n", n);
         printf("WORDS IN TEXT:        %d\n", words);
+        printf("CANARY\n");
     }
     else
     {
@@ -182,7 +183,6 @@ int main(int argc, char *argv[])
         printf("%.5f\n", time_check);
         printf("%.5f\n", time_size);
         printf("%.5f\n", time_unload);
-        printf("CANARY\n");
     }
 
     // that's all folks
