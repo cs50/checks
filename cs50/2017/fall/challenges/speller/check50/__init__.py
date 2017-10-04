@@ -1,5 +1,6 @@
 import os
 import re
+import uuid
 
 from check50 import *
 
@@ -22,10 +23,20 @@ class Challenge(Checks):
         """qualifies for Big Board"""
         try:
 
+            # inject canary
+            canary = uuid.uuid4()
+            self.spawn("sed -i 's/CANARY/{}/' speller.c".format(canary).exit(0)
+            self.spawn("make").exit(0)
+
             # Run on aca.txt
             self.spawn("./speller dictionaries/large texts/aca.txt 0 > actual.out").exit(0, timeout=20)
             actual = open("actual.out").read().splitlines()
             expected = open("sols/aca.txt").read().splitlines()
+
+            # check for canary
+            if canary != actual[-1]:
+                raise Error("Your Makefile doesn't seem to have compiled speller.c")
+            del actual[-1]
 
             # Compare output line for line.
             if len(actual) != len(expected):
@@ -43,7 +54,7 @@ class Challenge(Checks):
     @check("qualifies")
     def benchmark(self):
         """passes benchmarking"""
-    
+
         # Timing data.
         self.data["time"] = {
             "load": 0.0,
@@ -55,9 +66,9 @@ class Challenge(Checks):
             out = self.spawn("./speller dictionaries/large texts/{} 1".format(text)).stdout(timeout=20)
             load, check, size, unload = map(float, out.split())
             self.data["time"]["load"] += load
-            self.data["time"]["check"] += check 
-            self.data["time"]["size"] += size 
-            self.data["time"]["unload"] += unload 
+            self.data["time"]["check"] += check
+            self.data["time"]["size"] += size
+            self.data["time"]["unload"] += unload
         self.data["time"]["total"] = self.data["time"]["load"] + self.data["time"]["check"] + \
                                      self.data["time"]["size"] + self.data["time"]["unload"]
 
@@ -65,7 +76,7 @@ class Challenge(Checks):
         # Memory data.
         self.spawn("valgrind --tool=massif --heap=yes --stacks=yes --massif-out-file=massif.out ./speller dictionaries/large texts/holmes.txt 1").stdout(timeout=20)
         f = open("massif.out")
-    
+
         heap = 0
         stack = 0
         re_heap = re.compile("mem_heap_B=(\d+)")

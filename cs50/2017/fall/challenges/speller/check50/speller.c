@@ -182,6 +182,7 @@ int main(int argc, char *argv[])
         printf("%.5f\n", time_check);
         printf("%.5f\n", time_size);
         printf("%.5f\n", time_unload);
+        printf("CANARY\n");
     }
 
     // that's all folks
