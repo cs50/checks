@@ -1,8 +1,6 @@
 *
-!bmp.h
 !Makefile
 !README.md
 !whodunit.c
-#bmp.h
 #README.md
 #whodunit.c
