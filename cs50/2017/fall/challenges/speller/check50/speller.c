@@ -178,10 +178,10 @@ int main(int argc, char *argv[])
     }
     else
     {
-        printf("%.2f\n", time_load);
-        printf("%.2f\n", time_check);
-        printf("%.2f\n", time_size);
-        printf("%.2f\n", time_unload);
+        printf("%.5f\n", time_load);
+        printf("%.5f\n", time_check);
+        printf("%.5f\n", time_size);
+        printf("%.5f\n", time_unload);
     }
 
     // that's all folks
