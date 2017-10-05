@@ -24,9 +24,9 @@ class Challenge(Checks):
         try:
 
             # inject canary
-            canary = uuid.uuid4()
-            self.spawn("sed -i 's/CANARY/{}/' speller.c".format(canary)).exit(0)
-            self.spawn("make").exit(0)
+            canary = str(uuid.uuid4())
+            self.spawn("sed -i -e 's/CANARY/{}/' speller.c".format(canary)).exit(0)
+            self.spawn("make -B").exit(0)
 
             # Run on aca.txt
             self.spawn("./speller dictionaries/large texts/aca.txt 0 > actual.out").exit(0, timeout=20)
