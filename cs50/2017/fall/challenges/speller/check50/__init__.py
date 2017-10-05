@@ -53,7 +53,11 @@ class Challenge(Checks):
         }
         for text in os.listdir("texts"):
             out = self.spawn("./speller dictionaries/large texts/{} 1".format(text)).stdout(timeout=20)
-            load, check, size, unload = map(float, out.split())
+            try:
+                load, check, size, unload = map(float, out.split())
+            except ValueError:
+                self.log.append(out)
+                raise Error("program has unexpected output or runtime error")
             self.data["time"]["load"] += load
             self.data["time"]["check"] += check 
             self.data["time"]["size"] += size 
