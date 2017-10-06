@@ -68,7 +68,9 @@ class Challenge(Checks):
                 load, check, size, unload = map(float, out.split())
             except ValueError:
                 self.log.append(out)
-                raise Error("program has unexpected output or runtime error")
+                e = Error("program has unexpected output or runtime error")
+                e.helpers = "If your hash function is causing an integer overflow error, try removing -fsanitize=integer from CFLAGS in your Makefile!"
+                raise e
             self.data["time"]["load"] += load
             self.data["time"]["check"] += check
             self.data["time"]["size"] += size
