@@ -3,8 +3,8 @@
 !*.h
 !*.md
 !Makefile
+speller.c
 #dictionary.c
 #dictionary.h
 #Makefile
 #README.md
-#speller.c
