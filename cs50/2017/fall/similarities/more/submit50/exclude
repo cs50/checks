@@ -1,6 +1,5 @@
-*
-!helpers.py
-!templates/index.html
-!templates/matrix.html
+*.pyc
+__pycache__/
+#helpers.py
 #templates/index.html
 #templates/matrix.html

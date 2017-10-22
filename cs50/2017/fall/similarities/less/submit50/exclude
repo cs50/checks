@@ -1,5 +1,4 @@
-*
-!helpers.py
-!templates/index.html
+*.pyc
+__pycache__/
 #helpers.py
 #templates/index.html
