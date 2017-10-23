@@ -36,7 +36,6 @@ class Similarities(Checks):
         except Error as e:
             raise e
         except Exception as e:
-            sys.stdout = stdout
             raise Error(str(e))
 
     @check("compiles")
