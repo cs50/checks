@@ -1,5 +1,6 @@
 import imp
 
+from contextlib import redirect_stdout
 from check50 import *
 
 class Similarities(Checks):
@@ -21,10 +22,12 @@ class Similarities(Checks):
         try:
             helpers = imp.load_source("helpers", "helpers.py")
             self.log.append("Running {} on inputs {} and {}...".format(method, repr(a), repr(b)))
-            if method != "substrings":
-                actual = getattr(helpers, method)(a, b)
-            else:
-                actual = getattr(helpers, method)(a, b, length)
+            with open("/dev/null", "w") as f:
+                with redirect_stdout(f):
+                    if method != "substrings":
+                        actual = getattr(helpers, method)(a, b)
+                    else:
+                        actual = getattr(helpers, method)(a, b, length)
             if len(actual) != len(expected):
                 raise Error("Expected {} matches, not {}".format(len(expected), len(actual)))
             actual = set(actual)
@@ -33,6 +36,7 @@ class Similarities(Checks):
         except Error as e:
             raise e
         except Exception as e:
+            sys.stdout = stdout
             raise Error(str(e))
 
     @check("compiles")

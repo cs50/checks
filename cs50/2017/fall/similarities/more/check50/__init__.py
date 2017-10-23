@@ -1,5 +1,6 @@
 import imp
 
+from contextlib import redirect_stdout
 from check50 import *
 
 class Similarities(Checks):
@@ -21,7 +22,9 @@ class Similarities(Checks):
         try:
             helpers = imp.load_source("helpers", "helpers.py")
             self.log.append("Checking edit distance for inputs {} and {}...".format(repr(a), repr(b)))
-            actual = helpers.distances(a, b)[len(a)][len(b)][0]
+            with open("/dev/null", "w") as f:
+                with redirect_stdout(f):
+                    actual = helpers.distances(a, b)[len(a)][len(b)][0]
             if actual != expected:
                 raise Error("Expected edit distance of {}, not {}".format(expected, actual))
         except Error as e:
