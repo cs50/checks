@@ -7,7 +7,7 @@ class Scramble(Checks):
     def exists(self):
         """scramble.c exists."""
         self.require("scramble.c")
-        self.add("words.txt", "3.txt")
+        self.add("words.txt")
 
     @check("exists")
     def compiles(self):
@@ -15,81 +15,16 @@ class Scramble(Checks):
         self.spawn(self.spawn("clang -std=c11 -o scramble scramble.c -lcs50 -lm").exit())
 
     @check("compiles")
-    def draw(self):
+    def draw3(self):
         """draws board correctly"""
-        self.spawn("./scramble 3").stdout("  N E H I\n  E D N T\n  T E A I\n  E O V T").stdout(">")
+        self.spawn("./scramble 3").stdout("  N E H I\n E D N T\n  T E A I\n  E O V T").stdout(">")
 
+    @check("compiles")
+    def draw5(self):
+        """draws board correctly"""
+        self.spawn("./scramble 5").stdout("EAYADAEILTAEWEIE").stdout(">")
 
-
-    '''        correct = File("3.txt").read()
-        check_grid(output, correct)
-
-    @check("init3")
-    def invalid8(self):
-        """3x3 board: catches moving 8 an illegal move"""
-        self.spawn("./fifteen 3").stdin("8")                    \
-                                 .stdout("Illegal move.")       \
-                                 .stdout("8-7-6|5-4-3|2-1-0\n") \
-                                 .stdout("Tile to move:")
-    @check("init3")
-    def valid1(self):
-        """3x3 board: catches moving 1 as a legal move"""
-        self.spawn("./fifteen 3").stdin("1")                    \
-                                 .stdout("8-7-6|5-4-3|2-0-1\n") \
-                                 .stdout("Tile to move:")
-
-    @check("init3")
-    def move_up2(self):
-        """3x3 board: move blank up twice"""
-        self.spawn("./fifteen 3").stdin("3")                    \
-                                 .stdout("8-7-6|5-4-0|2-1-3\n") \
-                                 .stdin("6")                    \
-                                 .stdout("8-7-0|5-4-6|2-1-3\n")
-
-    @check("init3")
-    def move_left2(self):
-        """3x3 board: move blank left twice"""
-        self.spawn("./fifteen 3").stdin("1")                    \
-                                 .stdout("8-7-6|5-4-3|2-0-1\n") \
-                                 .stdin("2")                    \
-                                 .stdout("8-7-6|5-4-3|0-2-1\n")
-
-    @check("init3")
-    def move_left_right(self):
-        """3x3 board: move blank left then right"""
-        self.spawn("./fifteen 3").stdin("1")                    \
-                                 .stdout("8-7-6|5-4-3|2-0-1\n") \
-                                 .stdin("2")                    \
-                                 .stdout("8-7-6|5-4-3|2-1-0\n")
-
-    @check("init3")
-    def move_up_down(self):
-        """3x3 board: move blank up then down"""
-        self.spawn("./fifteen 3").stdin("3")                    \
-                                 .stdout("8-7-6|5-4-0|2-1-3\n") \
-                                 .stdin("3")                    \
-                                 .stdout("8-7-6|5-4-3|2-1-0\n")
-
-    @check("init3")
-    def move_around(self):
-        """3x3 board: move up-up-left-down-down-left-up-up-right-down-down-right"""
-        child = self.spawn("./fifteen 3").stdout("Tile to move:")
-        moves = ["3", "6", "7", "4", "1", "2", "5", "8", "4", "1", "2", "3"]
-        for move in moves[:-1]:
-            child.stdin(move).stdout("Tile to move:")
-        child.stdin(moves[-1]).stdout("4-1-7|8-2-6|5-3-0")
-
-
-    @check("init3")
-    def invalid_start(self):
-        """3x3 board: make sure none of 2, 4, 5, 6, 7, 8 move tile"""
-        child = self.spawn("./fifteen 3").stdout("Tile to move:")
-        moves = ["2", "4", "5", "6", "7", "8"]
-        for move in moves:
-            child.stdin(move)                   \
-                 .stdout("Illegal move.")       \
-                 .stdout("8-7-6|5-4-3|0-2-1\n") \
-                 .stdout("Tile to move:")
+    '''
 
     @check("init3")
     def invalid_center(self):
@@ -137,9 +72,3 @@ class Scramble(Checks):
         for move in moves[:-1]:
             child.stdin(move).stdout("Tile to move:")
         child.stdin(moves[-1]).stdout("1-2-3-4|5-6-7-8|9-10-11-12|13-14-15-0").exit(0)'''
-def check_grid(output, correct):
-    if output == correct:
-        return
-    err = Error(Mismatch(correct, output))
-    err.helpers = "Are you printing an additional character at the beginning of each line?"
-    raise err
