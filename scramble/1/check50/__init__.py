@@ -17,11 +17,14 @@ class Scramble(Checks):
     @check("compiles")
     def draw(self):
         """draws board correctly"""
-        output = self.spawn("./scramble 3").stdout()
-        correct = File("3.txt").read()
+        self.spawn("./scramble 3").stdout("  N E H I\n  E D N T\n  T E A I\n  E O V T").stdout(">")
+
+
+
+    '''        correct = File("3.txt").read()
         check_grid(output, correct)
 
-    '''@check("init3")
+    @check("init3")
     def invalid8(self):
         """3x3 board: catches moving 8 an illegal move"""
         self.spawn("./fifteen 3").stdin("8")                    \
