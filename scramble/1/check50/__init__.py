@@ -7,6 +7,7 @@ class Scramble(Checks):
     def exists(self):
         """scramble.c exists."""
         self.require("scramble.c")
+        self.add("words.txt", "3.txt")
 
     @check("exists")
     def compiles(self):
@@ -16,7 +17,9 @@ class Scramble(Checks):
     @check("compiles")
     def draw(self):
         """draws board correctly"""
-        self.spawn("./scramble 3").stdout("N E H I\n E D N T\n T E A I\n E O V T\n").stdout("Score: 0").stdout("Time: 30")
+        output = self.spawn("./scramble 3").stdout()
+        correct = File("3.txt").read()
+        check_grid(output, correct)
 
     '''@check("init3")
     def invalid8(self):
@@ -131,3 +134,9 @@ class Scramble(Checks):
         for move in moves[:-1]:
             child.stdin(move).stdout("Tile to move:")
         child.stdin(moves[-1]).stdout("1-2-3-4|5-6-7-8|9-10-11-12|13-14-15-0").exit(0)'''
+def check_grid(output, correct):
+    if output == correct:
+        return
+    err = Error(Mismatch(correct, output))
+    err.helpers = "Are you printing an additional character at the beginning of each line?"
+    raise err
