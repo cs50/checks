@@ -17,8 +17,7 @@ class Scramble(Checks):
     @check("compiles")
     def draw(self):
         """draws board correctly"""
-        output = self.spawn("./scramble 3").stdout().stdin()
-        self.add("words.txt", "3.txt")
+        output = self.spawn("./scramble 3").stdout()
         correct = File("3.txt").read()
         check_grid(output, correct)
 
