@@ -17,7 +17,7 @@ class Scramble(Checks):
     @check("compiles")
     def draw3(self):
         """draws board correctly"""
-        self.spawn("./scramble 3").stdout("  N E H I\n  E D N T\n  T E A I\n  E O V T").stdout(">")
+        self.spawn("./scramble 3").stdout("\s*N\s*E\s*H\s*I\n\s*E\s*D\s*N\s*T\n\s*T\s*E\s*A\s*I\n\s*E\s*O\s*V\s*T","  N E H I\n  E D N T\n  T E A I\n  E O V T").stdout(">")
 
     @check("compiles")
     def draw5(self):
