@@ -17,12 +17,12 @@ class Scramble(Checks):
     @check("compiles")
     def draw3(self):
         """draws board correctly"""
-        self.spawn("./scramble 3").stdout("  N E H I\n E D N T\n  T E A I\n  E O V T").stdout(">")
+        self.spawn("./scramble 3").stdout("  N E H I\n  E D N T\n  T E A I\n  E O V T").stdout(">")
 
     @check("compiles")
     def draw5(self):
         """draws board correctly"""
-        self.spawn("./scramble 5").stdout("EAYADAEILTAEWEIE").stdout(">")
+        self.spawn("./scramble 5").stdout("  E A Y A\n D A E I\n  L T A E\n  W E I E").stdout(">")
 
     '''
 
