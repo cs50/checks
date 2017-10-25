@@ -22,7 +22,7 @@ class Scramble(Checks):
     @check("compiles")
     def draw5(self):
         """draws board correctly"""
-        self.spawn("./scramble 5").stdout("  E A Y A\n D A E I\n  L T A E\n  W E I E").stdout(">")
+        self.spawn("./scramble 5").stdout("  E A Y A\n  D A E I\n  L T A E\n  W E I E").stdout(">")
 
     '''
 
