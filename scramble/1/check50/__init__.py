@@ -28,7 +28,7 @@ class Scramble(Checks):
     def draw5(self):
         """draws board 5 correctly"""
         self.spawn("./scramble 5").stdout().stdin("line").stdout("score: 0")
-        @check("compiles")
+
 
     @check("compiles")
     def lookup10(self):
