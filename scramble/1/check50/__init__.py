@@ -16,13 +16,26 @@ class Scramble(Checks):
 
     @check("compiles")
     def draw3(self):
-        """draws board correctly"""
+        """draws board 3 correctly"""
         self.spawn("./scramble 3").stdout("\s*N\s*E\s*H\s*I\n\s*E\s*D\s*N\s*T\n\s*T\s*E\s*A\s*I\n\s*E\s*O\s*V\s*T","  N E H I\n  E D N T\n  T E A I\n  E O V T").stdout(">")
 
     @check("compiles")
     def draw5(self):
-        """draws board correctly"""
+        """draws board 5 correctly"""
         self.spawn("./scramble 5").stdout("\s*E\s*A\s*Y\s*A\n\s*D\s*A\s*E\s*I\n\s*L\s*T\s*A\s*E\n\s*W\s*E\s*I\s*E", "  E A Y A\n  D A E I\n  L T A E\n  W E I E").stdout(">")
+
+    @check("compiles")
+    def draw5(self):
+        """draws board 5 correctly"""
+        self.spawn("./scramble 5").stdout().stdin().stdout(">")
+
+    @check("compiles")
+    def lookup10(self):
+        """finds and scores correctly"""
+        self.add("log10.txt")
+        self.spawn("./scramble 10").stdin(wag).stdout().stdin(tab).stdout().stdin(line).stdout().stdin(gate).stdout().stdin(line).stdout().stdin(gaw).stdout()
+        if not self.diff("log10.txt", "log.txt"):
+            raise Error("You messed up")
 
     '''
 
