@@ -29,6 +29,7 @@ class Scramble(Checks):
         """lookup function identifies words"""
         self.spawn("./scramble 10").stdin("line").stdout("Score: 4").stdout("Time: .*\n\n>")
 
+
     '''
 
     @check("init3")
