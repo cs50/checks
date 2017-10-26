@@ -34,6 +34,11 @@ class Scramble(Checks):
         """checks if words exist in words.txt"""
         self.spawn("./scramble 15").stdin("hhh").stdout("Score: 0").stdin("leh").stdout("Score: 0").stdout("Time: .*\n\n>")
 
+    @check("compiles")
+    def scramble5(self):
+        """draws board 5 correctly"""
+        self.spawn("./scramble 5").stdout("\s*E\s*A\s*Y\s*A\n\s*D\s*A\s*E\s*I\n\s*L\s*T\s*A\s*E\n\s*W\s*E\s*I\s*E", "  E A Y A\n  D A E I\n  L T A E\n  W E I E").stdout(">").stdin("scramble").stdout("\s*W\s*L\s*D\s*E\n\s*E\s*T\s*A\s*A\n\s*I\s*A\s*E\s*Y\n\s*E\s*E\s*I\s*A", "  W L D E\n  E T A A\n  I A E Y\n  E E I A"))
+
 
     '''
 
