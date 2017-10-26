@@ -25,7 +25,7 @@ class Scramble(Checks):
         self.spawn("./scramble 5").stdout("\s*E\s*A\s*Y\s*A\n\s*D\s*A\s*E\s*I\n\s*L\s*T\s*A\s*E\n\s*W\s*E\s*I\s*E", "  E A Y A\n  D A E I\n  L T A E\n  W E I E").stdout(">")
 
     @check("compiles")
-    def draw5(self):
+    def lookup10(self):
         """lookup function identifies words"""
         self.spawn("./scramble 10").stdin("line").stdout("Score: 4").stdout("Time: .*\n\n>")
 
