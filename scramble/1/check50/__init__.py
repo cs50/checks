@@ -29,6 +29,12 @@ class Scramble(Checks):
         """user can only score a word once"""
         self.spawn("./scramble 10").stdin("line").stdout("Score: 4").stdin("line").stdout("Score: 4").stdout("Time: .*\n\n>")
 
+    @check("compiles")
+    def lookup15(self):
+        """checks if words exist in words.txt"""
+        self.spawn("./scramble 15").stdin("hhh").stdout("Score: 0").stdin("leh").stdout("Score: 4").stdout("Time: .*\n\n>")
+
+
     '''
 
     @check("init3")
