@@ -26,17 +26,8 @@ class Scramble(Checks):
 
     @check("compiles")
     def draw5(self):
-        """draws board 5 correctly"""
-        self.spawn("./scramble 5").stdout().stdin("line").stdout("score: 0")
-
-
-    @check("compiles")
-    def lookup10(self):
-        """finds and scores correctly"""
-        self.add("log10.txt")
-        self.spawn("./scramble 10").stdin(line).stdout().stdin(EOF)
-        if not self.diff("log10.txt", "log.txt"):
-            raise Error("You messed up")
+        """lookup function identifies words"""
+        self.spawn("./scramble 10").stdin("line").stdout("Score: 4").stdout("Time: .*\n\n>")
 
     '''
 
