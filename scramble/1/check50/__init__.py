@@ -32,7 +32,7 @@ class Scramble(Checks):
     @check("compiles")
     def lookup15(self):
         """checks if words exist in words.txt"""
-        self.spawn("./scramble 15").stdin("hhh").stdout("Score: 0").stdin("leh").stdout("Score: 4").stdout("Time: .*\n\n>")
+        self.spawn("./scramble 15").stdin("hhh").stdout("Score: 0").stdin("leh").stdout("Score: 0").stdout("Time: .*\n\n>")
 
 
     '''
