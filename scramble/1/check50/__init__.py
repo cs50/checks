@@ -26,9 +26,8 @@ class Scramble(Checks):
 
     @check("compiles")
     def lookup10(self):
-        """lookup function identifies words"""
-        self.spawn("./scramble 10").stdin("line").stdout("Score: 4").stdout("Time: .*\n\n>")
-
+        """user can only score a word once"""
+        self.spawn("./scramble 10").stdin("line").stdout("Score: 4").stdin("line").stdout("Score: 4").stdout("Time: .*\n\n>")
 
     '''
 
