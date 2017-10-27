@@ -12,7 +12,7 @@ class Scramble(Checks):
     @check("exists")
     def compiles(self):
         """scramble.c compiles."""
-        (self.spawn("clang -std=c11 -o scramble scramble.c -lcs50 -lm").exit()
+        self.spawn("clang -std=c11 -o scramble scramble.c -lcs50 -lm").exit()
 
     @check("compiles")
     def draw3(self):
