@@ -1,6 +1,5 @@
 *.pyc
 __pycache__/
-static/
 application.py
 requirements.txt
 #helpers.py

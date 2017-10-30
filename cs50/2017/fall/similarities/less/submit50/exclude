@@ -1,6 +1,5 @@
 *.pyc
 __pycache__/
-static/
 Makefile
 application.py
 compare
