@@ -27,14 +27,14 @@ class Finance(Checks):
         return self.app.post("/login", data={"username": username, "password": password})
 
     @helper
-    def validate_form(self, route, fields):
+    def validate_form(self, route, fields, field_tag="input"):
         """Make sure HTML form at `route` has input fields given by `fields`"""
         if not isinstance(fields, list):
             fields = [fields]
 
         content = self.app.get(route).content()
         required = {field: False for field in fields}
-        for tag in content.find_all("input"):
+        for tag in content.find_all(field_tag):
             try:
                 name = tag.attrs["name"]
                 if required[name]:
@@ -50,7 +50,7 @@ class Finance(Checks):
         except StopIteration:
             pass
         else:
-            raise Error("expected to find an input field with name \"{}\", but none found".format(missing))
+            raise Error("expected to find {} field with name \"{}\", but none found".format(field_tag, missing))
 
         if content.find("button", type="submit") is None:
             raise Error("expected button to submit form, but none was found")
@@ -173,7 +173,8 @@ class Finance(Checks):
     def sell_page(self):
         """sell page has all required elements"""
         self.login("cs50", "ohhai")
-        self.validate_form("/sell", ["shares", "symbol"])
+        self.validate_form("/sell", ["shares"])
+        self.validate_form("/sell", ["symbol"], field_tag="select")
 
     @check("buy_handles_valid")
     def sell_handles_invalid(self):
