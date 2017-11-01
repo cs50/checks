@@ -89,7 +89,7 @@ class Finance(Checks):
     @check("register_page")
     def simple_register(self):
         """registering user succeeds"""
-        self.register("cs50", "ohhai28!", "ohhai28!").status(200)
+        self.register("cs50", "ohHai28!", "ohHai28!").status(200)
 
     @check("register_page")
     def register_empty_field_fails(self):
@@ -105,7 +105,7 @@ class Finance(Checks):
     @check("register_page")
     def register_reject_duplicate_username(self):
         """registration rejects duplicate username"""
-        user = ["elfie", "doggo28!", "doggo28!"]
+        user = ["elfie", "Doggo28!", "Doggo28!"]
         self.register(*user).status(200)
         self.register(*user).status(400)
 
@@ -117,48 +117,48 @@ class Finance(Checks):
     @check("simple_register")
     def can_login(self):
         """logging in as registered user succceeds"""
-        self.login("cs50", "ohhai28!").status(200).get("/", follow_redirects=False).status(200)
+        self.login("cs50", "ohHai28!").status(200).get("/", follow_redirects=False).status(200)
 
     @check("can_login")
     def quote_page(self):
         """quote page has all required elements"""
-        self.login("cs50", "ohhai28!")
+        self.login("cs50", "ohHai28!")
         self.validate_form("/quote", "symbol")
 
     @check("quote_page")
     def quote_handles_invalid(self):
         """quote handles invalid ticker symbol"""
-        self.login("cs50", "ohhai28!")
+        self.login("cs50", "ohHai28!")
         self.quote("ZZZ").status(400)
 
     @check("quote_page")
     def quote_handles_blank(self):
         """quote handles blank ticker symbol"""
-        self.login("cs50", "ohhai28!")
+        self.login("cs50", "ohHai28!")
         self.quote("").status(400)
 
     @check("quote_page")
     def quote_handles_valid(self):
         """quote handles valid ticker symbol"""
-        self.login("cs50", "ohhai28!")
+        self.login("cs50", "ohHai28!")
         self.quote("AAAA").status(200).content(r"28\.00", "28.00", name="body")
 
     @check("can_login")
     def buy_page(self):
         """buy page has all required elements"""
-        self.login("cs50", "ohhai28!")
+        self.login("cs50", "ohHai28!")
         self.validate_form("/buy", ["shares", "symbol"])
 
     @check("buy_page")
     def buy_handles_invalid(self):
         """buy handles invalid ticker symbol"""
-        self.login("cs50", "ohhai28!")
+        self.login("cs50", "ohHai28!")
         self.transaction("/buy", "ZZZZ", "2").status(400)
 
     @check("buy_page")
     def buy_handles_incorrect_shares(self):
         """buy handles fractional, negative, and non-numeric shares"""
-        self.login("cs50", "ohhai28!")
+        self.login("cs50", "ohHai28!")
         self.transaction("/buy", "AAAA", "-1").status(400)
         self.transaction("/buy", "AAAA", "1.5").status(400)
         self.transaction("/buy", "AAAA", "foo").status(400)
@@ -166,24 +166,24 @@ class Finance(Checks):
     @check("buy_page")
     def buy_handles_valid(self):
         """buy handles valid purchase"""
-        self.login("cs50", "ohhai28!")
+        self.login("cs50", "ohHai28!")
         self.transaction("/buy", "AAAA", "4").content(r"112\.00", "112.00").content(r"9,?888\.00", "9,888.00")
 
     @check("can_login")
     def sell_page(self):
         """sell page has all required elements"""
-        self.login("cs50", "ohhai28!")
+        self.login("cs50", "ohHai28!")
         self.validate_form("/sell", ["shares"])
         self.validate_form("/sell", ["symbol"], field_tag="select")
 
     @check("buy_handles_valid")
     def sell_handles_invalid(self):
         """sell handles invalid number of shares"""
-        self.login("cs50", "ohhai28!")
+        self.login("cs50", "ohHai28!")
         self.transaction("/sell", "AAAA", "8").status(400)
 
     @check("buy_handles_valid")
     def sell_handles_valid(self):
         """sell handles valid sale"""
-        self.login("cs50", "ohhai28!")
+        self.login("cs50", "ohHai28!")
         self.transaction("/sell", "AAAA", "2").content("56\.00", "56.00").content(r"9,?944\.00", "9,944.00")
