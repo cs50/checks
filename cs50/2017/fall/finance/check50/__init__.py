@@ -178,9 +178,9 @@ class Finance(Checks):
 
     @check("buy_handles_valid")
     def sell_handles_invalid(self):
-        """sell handles invalid ticker symbol"""
+        """sell handles invalid number of shares"""
         self.login("cs50", "ohhai")
-        self.transaction("/sell", "ZZZZ", "2").status(400)
+        self.transaction("/sell", "AAAA", "8").status(400)
 
     @check("buy_handles_valid")
     def sell_handles_valid(self):
