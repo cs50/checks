@@ -169,7 +169,7 @@ class Finance(Checks):
         self.login("cs50", "ohHai28!")
         self.transaction("/buy", "AAAA", "4").content(r"112\.00", "112.00").content(r"9,?888\.00", "9,888.00")
 
-    @check("can_login")
+    @check("buy_handles_valid")
     def sell_page(self):
         """sell page has all required elements"""
         self.login("cs50", "ohHai28!")
