@@ -40,20 +40,19 @@ class Scratch(Checks):
     def non_cat(self):
         """project contains a non-cat sprite"""
         project = json.loads(File("project.json").read())
-        non_cat = False
 
-        # As a heuristic, only the cat has a "meow" sound.
         for child in project["children"]:
 
             # Skip over any non-sprites (e.g. backdrops).
             if "costumes" not in child:
                 continue
 
-            # Check if the sprite has a "meow" sound.
-            can_meow = any(sound["soundName"] == "meow" for sound in child.get("sounds", []))
+            # Check if the sprite has the default costume.
+            is_cat = any(costume["baseLayerMD5"] == "09dc888b0b7df19f70d81588ae73420e.svg"
+                           for costume in child.get("costumes", []))
 
             # If it doesn't meow, we've found a non-cat sprite.
-            if not can_meow:
+            if not is_cat:
                 return
 
         # If we haven't returned, then no non-cat sprite found.
