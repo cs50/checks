@@ -49,6 +49,21 @@ class Credit(Checks):
         self.spawn("./credit").stdin("1234567890").stdout("^INVALID\n", "INVALID\n").exit(0)
 
     @check("compiles")
+    def test8(self):
+        """identifies 5105105105135100 as INVALID"""
+        self.spawn("./credit").stdin("5105105105135100").stdout("^INVALID\n", "INVALID\n").exit(0)
+
+    @check("compiles")
+    def test9(self):
+        """identifies 4111111111111114 as INVALID"""
+        self.spawn("./credit").stdin("4111111111111114").stdout("^INVALID\n", "INVALID\n").exit(0)
+
+    @check("compiles")
+    def test10(self):
+        """identifies 378282246310006 as INVALID"""
+        self.spawn("./credit").stdin("378282246310006").stdout("^INVALID\n", "INVALID\n").exit(0)
+
+    @check("compiles")
     def test_reject_foo(self):
         """rejects a non-numeric input of "foo" """
         self.spawn("./credit").stdin("foo").reject()
