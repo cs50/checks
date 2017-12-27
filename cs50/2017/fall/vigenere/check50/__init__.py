@@ -39,6 +39,16 @@ class Vigenere(Checks):
         self.spawn("./vigenere baz").stdin("world!$?").stdout("ciphertext:\s*xoqmd!\$\?\n", "ciphertext: xoqmd!$?\n").exit(0)
 
     @check("compiles")
+    def CSFiftyBrianyu28(self):
+        """encrypts "Brianyu28" as "Djnisrs28" using "CSFifty" as keyword"""
+        self.spawn("./vigenere CSFifty").stdin("Brianyu28").stdout("ciphertext:\s*Djnisrs28\n", "ciphertext: Djnisrs28\n").exit(0)
+
+    @check("compiles")
+    def ThisisCSFiftyMilesDanielFertel(self):
+        """encrypts "Miles Daniel Fertel" as "Fptwa Fssqje Ylzlmd" using "ThisisCSFifty" as keyword"""
+        self.spawn("./vigenere ThisisCSFifty").stdin("Miles Daniel Fertel").stdout("ciphertext:\s*Fptwa Fssqje Ylzlmd\n", "ciphertext: Fptwa Fssqje Ylzlmd\n").exit(0)
+
+    @check("compiles")
     def noarg(self):
         """handles lack of argv[1]"""
         self.spawn("./vigenere").exit(1)
