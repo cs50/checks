@@ -39,6 +39,11 @@ class Vigenere(Checks):
         self.spawn("./vigenere baz").stdin("world!$?").stdout("ciphertext:\s*xoqmd!\$\?\n", "ciphertext: xoqmd!$?\n").exit(0)
 
     @check("compiles")
+    def withspaces(self):
+        """encrypts "Hello, World!" as "Iekmo, Vprke!" using "baz" as keyword"""
+        self.spawn("./vigenere baz").stdin("Hello, World!").stdout("ciphertext:\s*Iekmo, Vprke!\n", "ciphertext: Iekmo, Vprke!\n").exit(0)
+    
+    @check("compiles")
     def noarg(self):
         """handles lack of argv[1]"""
         self.spawn("./vigenere").exit(1)
