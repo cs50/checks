@@ -41,7 +41,7 @@ class Vigenere(Checks):
     @check("compiles")
     def withspaces(self):
         """encrypts "hello, world!" as "iekmo, vprke!" using "baz" as keyword"""
-        self.spawn("./vigenere baz").stdin("Hello, World!").stdout("ciphertext:\s*iekmo, vprke!\n", "ciphertext: iekmo, vprke!\n").exit(0)
+        self.spawn("./vigenere baz").stdin("hello, world!").stdout("ciphertext:\s*iekmo, vprke!\n", "ciphertext: iekmo, vprke!\n").exit(0)
 
     @check("compiles")
     def noarg(self):
