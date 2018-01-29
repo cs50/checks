@@ -65,6 +65,7 @@ class Scratch(Checks):
 
         # Add up scripts from each sprite or backdrop.
         num_scripts = sum(len(child.get("scripts", [])) for child in project["children"])
+        num_scripts += len(project.get("scripts", []))
 
         if num_scripts < 3:
             raise Error("Only {} script{} found, 3 required.".format(num_scripts,
