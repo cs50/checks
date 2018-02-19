@@ -81,6 +81,21 @@ class ResizeLess(Checks):
     def compiles(self):
         """resize.c compiles."""
         self.spawn("clang -std=c11 -o resize resize.c -lm -lcs50").exit(0)
+        
+    @check("compiles")
+    def negfactor(self):
+        """rejects a negative factor"""
+        self.spawn("./resize -1 small.bmp outfile.bmp").exit(1)
+
+    @check("compiles")
+    def zerofactor(self):
+        """rejects a factor of zero"""
+        self.spawn("./resize 0 small.bmp outfile.bmp").exit(1)
+        
+    @check("compiles")
+    def toolargefactor(self):
+        """rejects a factor > 100"""
+        self.spawn("./resize 101 small.bmp outfile.bmp").exit(1)
 
     @check("compiles")
     def small_1(self):
