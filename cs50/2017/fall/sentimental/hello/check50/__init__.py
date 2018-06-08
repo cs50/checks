@@ -13,7 +13,7 @@ class Hello(Checks):
     def prints_hello(self):
         """prints "hello, world\\n" """
         expected = "[Hh]ello, world!?\n"
-        actual = self.spawn("python hello.py").stdout()
+        actual = self.spawn("python3 hello.py").stdout()
         if not re.match(expected, actual):
             err = Error(Mismatch("hello, world\n", actual))
             if re.match(expected[:-1], actual):
