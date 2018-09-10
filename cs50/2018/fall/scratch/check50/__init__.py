@@ -142,4 +142,4 @@ def scratch2_contains(script, keywords):
         return False
     if script[0] in keywords:
         return True
-    return any(contains(child, keywords) for child in script)
+    return any(scratch2_contains(child, keywords) for child in script)
