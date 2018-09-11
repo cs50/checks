@@ -14,11 +14,11 @@ class Scratch(Checks):
         # Make sure there is only one .sb3 file.
         filenames = [filename for filename in os.listdir() if filename.endswith(".sb3")]
         if len(filenames) > 1:
-            raise Error("More than one .sb3 file found. Make sure there's only one!")
+            filenames = [max(filenames, key=os.path.getmtime)]
         elif len(filenames) == 0:
             filenames = [filename for filename in os.listdir() if filename.endswith(".sb2")]
             if len(filenames) > 1:
-                raise Error("More than one .sb2 file found. Make sure there's only one!")
+                filenames = [max(filenames, key=os.path.getmtime)]
             elif len(filenames) == 0:
                 raise Error("No .sb3 file found.")
         filename = filenames[0]
