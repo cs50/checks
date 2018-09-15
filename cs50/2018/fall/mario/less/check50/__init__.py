@@ -22,8 +22,8 @@ class MarioLess(Checks):
 
     @check("compiles")
     def test0(self):
-        """handles a height of 0 correctly"""
-        self.spawn("./mario").stdin("0").stdout(EOF).exit(0)
+        """rejects a height of 0"""
+        self.spawn("./mario").stdin("0").reject()
 
     @check("compiles")
     def test1(self):
