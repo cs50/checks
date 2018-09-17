@@ -1,0 +1,6 @@
+*.pyc
+__pycache__/
+.*
+#application.py
+#analyzer.py
+#tweets
