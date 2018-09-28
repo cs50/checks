@@ -16,8 +16,8 @@ class Hello(Checks):
 
     @check("compiles")
     def david(self):
-        """responds to name David."""
-        self.spawn("./hello").stdin("David").stdout("David", "David")
+        """responds to name Veronica."""
+        self.spawn("./hello").stdin("Veronica").stdout("Veronica", "Veronica")
 
     @check("compiles")
     def brian(self):
