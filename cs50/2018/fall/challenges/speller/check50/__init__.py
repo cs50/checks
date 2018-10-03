@@ -9,8 +9,8 @@ class Challenge(Checks):
     @check()
     def exists(self):
         """dictionary.c and dictionary.h exist"""
-        self.require("dictionary.c", "dictionary.h", "Makefile")
-        self.add("speller.c", "dictionaries", "texts", "sols")
+        self.require("dictionary.c", "dictionary.h")
+        self.add("speller.c", "dictionaries", "Makefile", "texts", "sols")
 
     @check("exists")
     def compiles(self):
