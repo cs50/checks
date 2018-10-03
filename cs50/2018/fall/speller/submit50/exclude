@@ -2,9 +2,7 @@
 !*.c
 !*.h
 !*.md
-!Makefile
 speller.c
 #dictionary.c
 #dictionary.h
-#Makefile
 #README.md

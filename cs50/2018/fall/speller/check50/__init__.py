@@ -5,13 +5,13 @@ class Speller(Checks):
 
     @check()
     def exists(self):
-        """dictionary.c, dictionary.h, and Makefile exist"""
-        self.require("dictionary.c", "dictionary.h", "Makefile")
+        """dictionary.c and dictionary.h exist"""
+        self.require("dictionary.c", "dictionary.h")
 
     @check("exists")
     def compiles(self):
         """speller compiles"""
-        self.add("speller.c")
+        self.add("speller.c", "Makefile")
         self.spawn("make").exit(0)
 
     @check("compiles")
