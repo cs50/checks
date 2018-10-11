@@ -80,7 +80,7 @@ class Challenge(Checks):
 
 
         # Memory data.
-        self.spawn("valgrind --tool=massif --heap=yes --stacks=yes --massif-out-file=massif.out ./speller dictionaries/large texts/holmes.txt 1").stdout()
+        self.spawn("valgrind --tool=massif --heap=yes --stacks=yes --massif-out-file=massif.out ./speller dictionaries/large texts/holmes.txt 1").stdout(timeout=20)
         f = open("massif.out")
 
         heap = 0
