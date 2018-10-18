@@ -8,7 +8,7 @@ class MarioLess(Checks):
     def exists(self):
         """mario.py exists."""
         self.require("mario.py")
-        self.add("1.txt", "2.txt", "23.txt")
+        self.add("1.txt", "2.txt", "8.txt")
 
     @check("exists")
     def test_reject_negative(self):
@@ -37,8 +37,8 @@ class MarioLess(Checks):
     @check("exists")
     def test23(self):
         """handles a height of 23 correctly"""
-        out = self.spawn("python3 mario.py").stdin("23").stdout()
-        correct = File("23.txt").read()
+        out = self.spawn("python3 mario.py").stdin("8").stdout()
+        correct = File("8.txt").read()
         check_pyramid(out, correct)
 
     @check("exists")
