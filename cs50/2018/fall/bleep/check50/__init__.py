@@ -6,7 +6,7 @@ class Bleep(Checks):
 
     @check()
     def exists(self):
-        """bleep exists."""
+        """bleep exists"""
         self.require("bleep")
         self.add("banned.txt")
 
@@ -28,9 +28,9 @@ class Bleep(Checks):
     @check("exists")
     def test_darn(self):
         """input of 'This darn world' outputs 'This **** world'"""
-        self.spawn("./bleep banned.txt").stdin("This darn world").stdout("This **** world\s*\n").exit(0)
+        self.spawn("./bleep banned.txt").stdin("This darn world").stdout("This \*\*\*\* world\s*\n").exit(0)
 
     @check("exists")
     def handles_capitalizing(self):
         """input of 'THIS DARN WORLD' outputs 'THIS **** WORLD'"""
-        self.spawn("./bleep banned.txt").stdin("THIS DARN WORLD").stdout("THIS **** WORLD\s*\n").exit(0)
+        self.spawn("./bleep banned.txt").stdin("THIS DARN WORLD").stdout("THIS \*\*\*\* WORLD\s*\n").exit(0)
