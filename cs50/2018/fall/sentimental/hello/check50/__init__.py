@@ -9,13 +9,12 @@ class Hello(Checks):
         """hello.py exists."""
         self.require("hello.py")
 
-    @check("exists")
-    def prints_hello(self):
-        """prints "hello, world\\n" """
-        expected = "[Hh]ello, world!?\n"
-        actual = self.spawn("python3 hello.py").stdout()
-        if not re.match(expected, actual):
-            err = Error(Mismatch("hello, world\n", actual))
-            if re.match(expected[:-1], actual):
-                err.helpers = "Did you forget a newline (\"\\n\") at the end of your string?"
-            raise err
+    @check("compiles")
+    def david(self):
+        """responds to name Veronica."""
+        self.spawn("python hello.py").stdin("Veronica").stdout("hello, Veronica\n")
+
+    @check("compiles")
+    def brian(self):
+        """responds to name Brian."""
+        self.spawn("python hello.py").stdin("Brian").stdout("hello, Brian\n")
