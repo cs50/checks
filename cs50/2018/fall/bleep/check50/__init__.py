@@ -7,7 +7,7 @@ class Bleep(Checks):
     @check()
     def exists(self):
         """bleep exists"""
-        self.require("bleep")
+        self.require("bleep.py")
         self.add("banned.txt")
         self.add("banned2.txt")
 
