@@ -43,5 +43,5 @@ class Bleep(Checks):
 
     @check("exists")
     def handles_other_wordlists(self):
-        """handles banned words list with arbitrary words in them"""
+        """handles banned words lists with arbitrary words in them"""
         self.spawn("./bleep banned2.txt").stdin("My cat and dog are great").stdout("My \*\*\* and \*\*\* are great\s*\n").exit(0)
