@@ -9,6 +9,7 @@ class Bleep(Checks):
         """bleep exists"""
         self.require("bleep")
         self.add("banned.txt")
+        self.add("banned2.txt")
 
     @check("exists")
     def test_reject_no_args(self):
@@ -38,9 +39,9 @@ class Bleep(Checks):
     @check("exists")
     def substrings(self):
         """doesn't censor substrings"""
-        self.spawn("./bleep banned.txt").stdin("Darning my socks").stdout("Darning my socks").exit(0)
+        self.spawn("./bleep banned.txt").stdin("Darning my socks").stdout("Darning my socks\s*\n").exit(0)
 
     @check("exists")
     def handles_other_wordlists(self):
         """handles banned words list with arbitrary words in them"""
-        self.spawn("./bleep banned2.txt").stdin("I own a cat and a dog").stdout("I own a \*\*\* and a \*\*\*\s*\n").exit(0)
+        self.spawn("./bleep banned2.txt").stdin("My cat and dog are great").stdout("My \*\*\* and \*\*\* are great\s*\n").exit(0)
