@@ -12,9 +12,9 @@ class Hello(Checks):
     @check("exists")
     def david(self):
         """responds to name Veronica."""
-        self.spawn("python hello.py").stdin("Veronica").stdout("hello, Veronica\n")
+        self.spawn("python hello.py").stdin("Veronica").stdout("Veronica", "Veronica")
 
     @check("exists")
     def brian(self):
         """responds to name Brian."""
-        self.spawn("python hello.py").stdin("Brian").stdout("hello, Brian\n")
+        self.spawn("python hello.py").stdin("Brian").stdout("Brian", "Brian")
