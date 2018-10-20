@@ -17,8 +17,8 @@ class MarioLess(Checks):
 
     @check("exists")
     def test0(self):
-        """handles a height of 0 correctly"""
-        self.spawn("python3 mario.py").stdin("0").stdout(EOF).exit(0)
+        """rejects a height of 0"""
+        self.spawn("python3 mario.py").stdin("0").reject()
 
     @check("exists")
     def test1(self):
@@ -36,7 +36,7 @@ class MarioLess(Checks):
 
     @check("exists")
     def test23(self):
-        """handles a height of 23 correctly"""
+        """handles a height of 8 correctly"""
         out = self.spawn("python3 mario.py").stdin("8").stdout()
         correct = File("8.txt").read()
         check_pyramid(out, correct)
