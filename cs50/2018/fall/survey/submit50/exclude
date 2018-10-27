@@ -1,0 +1,7 @@
+*.pyc
+__pycache__/
+#application.py
+#templates/layout.html
+#templates/form.html
+#templates/error.html
+#static/styles.css
