@@ -46,9 +46,20 @@ class Survey(Checks):
     def has_text_fields(self):
         """has one or more text fields"""
 
-        inputs = self.get_content("/", "form")[0].find_all("input")
-        if len(tuple(filter(lambda e: e.attrs["type"] == "text", inputs))) < 1:
-            raise Error("expected at least one text input")
+        form = self.get_content("/", "form")[0]
+        if len(form.find_all("textarea")):
+            return
+
+        inputs = form.find_all("input")
+        types = [
+            "date", "datetime-local", "email", "month", "number", "password",
+            "search", "tel", "text", "time", "url", "week"
+        ]
+
+        if any((e.attrs["type"] in types for e in inputs)):
+            return
+
+        raise Error("expected at least one text input")
 
 
     @check("has_form")
