@@ -38,7 +38,7 @@ class Survey(Checks):
     def has_form(self):
         """has form"""
 
-        if len(self.get_content("/", "form")) != 1:
+        if len(self.get_content("/", "form")) < 1:
             raise Error("expected form element")
 
 
