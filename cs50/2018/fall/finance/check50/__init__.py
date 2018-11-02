@@ -114,11 +114,11 @@ class Finance(Checks):
         """/check route confirms whether username is available"""
         user = ["check50student1", "ohHai28!", "ohHai28!"]
         username = user[0]
-        self.app.get("/check", params={"username": username}).status(200).content()
+        content = self.flask(Finance.APP).get("/check", params={"username": username}).status(200).raw_content().decode("utf-8").strip()
         if content != "true":
             raise Error("route did not return true when username is available")
         self.register(*user).status(200)
-        self.app.get("/check", params={"username": username}).status(200).content()
+        content = self.flask(Finance.APP).get("/check", params={"username": username}).status(200).raw_content().decode("utf-8").strip()
         if content != "false":
             raise Error("route did not return false when username is unavailable")
 
