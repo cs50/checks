@@ -16,12 +16,12 @@ class Hello(Checks):
     @check("compiles")
     def test_hello_world(self):
         """prints "Hello, world!" if argv[1] is "world" """
-        self.spawn("./hello world").stdout("Hello, world!\n", "Hello, world!").exit(0)
+        self.spawn("./hello world").stdout("Hello, world!\n").exit(0)
 
     @check("compiles")
     def test_hello_elphie(self):
         """prints "Hello, elphie!" if argv[1] is "elphie" """
-        self.spawn("./hello elphie").stdout("Hello, elphie!\n", "Hello, elphie!").exit(0)
+        self.spawn("./hello elphie").stdout("Hello, elphie!\n").exit(0)
 
     @check("compiles")
     def test_lack_of_arguments(self):
