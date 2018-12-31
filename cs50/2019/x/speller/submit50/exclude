@@ -1,0 +1,7 @@
+*
+!*.c
+!*.h
+!*.md
+speller.c
+#dictionary.c
+#dictionary.h
