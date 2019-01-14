@@ -102,7 +102,7 @@ class Scratch(Checks):
         project = json.loads(File("project.json").read())
         if "targets" in project:
             project = project["targets"]
-            if not contains_block(project, ["data_setvariableto", "data_changevariableby"]):
+            if not contains_blocks(project, ["data_setvariableto", "data_changevariableby"]):
                 raise Error("No variables found, 1 required.")
         else:
             if project.get("variables"):
