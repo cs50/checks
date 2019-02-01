@@ -66,7 +66,7 @@ class Scratch(Checks):
         if "targets" in project:
             project = project["targets"]
             num_scripts = sum(sum(
-                (isinstance(target["blocks"][block], dict) and (target["blocks"][block]["parent"] is None))
+                (isinstance(target["blocks"][block], dict) and (target["blocks"][block].get("parent") is None))
                 for block in target["blocks"]) for target in project)
         else:
             num_scripts = sum(len(child.get("scripts", [])) for child in project["children"])
