@@ -1,0 +1,8 @@
+*.pyc
+__pycache__/
+Makefile
+application.py
+inputs/*
+compare
+#helpers.py
+#templates/index.html
