@@ -21,10 +21,10 @@ class Employee(Checks):
     def vowels(self):
         """employee.py handles titles that begin with vowels"""
         os.rename("2.csv", "employee.csv")
-        self.spawn("python employee.py").stdout("Laura Callahan is a IT Staff\n")
+        self.spawn("python employee.py").stdout("Laura Callahan is an IT Staff\n")
 
     @check("exists")
     def combination(self):
         """employee.py handles multiple titles"""
         os.rename("3.csv", "employee.csv")
-        self.spawn("python employee.py").stdout("Andrew Adams is a General Manager\nLaura Callahan is a IT Staff\n")
+        self.spawn("python employee.py").stdout("Andrew Adams is a General Manager\nLaura Callahan is an IT Staff\n")
