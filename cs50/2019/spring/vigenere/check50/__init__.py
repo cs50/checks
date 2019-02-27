@@ -16,32 +16,32 @@ class Vigenere(Checks):
     @check("compiles")
     def aa(self):
         """encrypts "a" as "a" using "a" as keyword"""
-        self.spawn("./vigenere a").stdin("a").stdout("ciphertext:\s*a\n", "ciphertext: a\n").exit(0)
+        self.spawn("./vigenere a").stdin("a").stdout("[Cc]iphertext:\s*a\n", "ciphertext: a\n").exit(0)
 
     @check("compiles")
     def bazbarfoo_caqgon(self):
         """encrypts "barfoo" as "caqgon" using "baz" as keyword"""
-        self.spawn("./vigenere baz").stdin("barfoo").stdout("ciphertext:\s*caqgon\n", "ciphertext: caqgon\n").exit(0)
+        self.spawn("./vigenere baz").stdin("barfoo").stdout("[Cc]iphertext:\s*caqgon\n", "ciphertext: caqgon\n").exit(0)
 
     @check("compiles")
     def mixedBaZBARFOO(self):
         """encrypts "BaRFoo" as "CaQGon" using "BaZ" as keyword"""
-        self.spawn("./vigenere BaZ").stdin("BaRFoo").stdout("ciphertext:\s*CaQGon\n", "ciphertext: CaQGon\n").exit(0)
+        self.spawn("./vigenere BaZ").stdin("BaRFoo").stdout("[Cc]iphertext:\s*CaQGon\n", "ciphertext: CaQGon\n").exit(0)
 
     @check("compiles")
     def allcapsBAZBARFOO(self):
         """encrypts "BARFOO" as "CAQGON" using "BAZ" as keyword"""
-        self.spawn("./vigenere BAZ").stdin("BARFOO").stdout("ciphertext:\s*CAQGON\n", "ciphertext: CAQGON\n").exit(0)
+        self.spawn("./vigenere BAZ").stdin("BARFOO").stdout("[Cc]iphertext:\s*CAQGON\n", "ciphertext: CAQGON\n").exit(0)
 
     @check("compiles")
     def bazworld(self):
         """encrypts "world!$?" as "xoqmd!$?" using "baz" as keyword"""
-        self.spawn("./vigenere baz").stdin("world!$?").stdout("ciphertext:\s*xoqmd!\$\?\n", "ciphertext: xoqmd!$?\n").exit(0)
+        self.spawn("./vigenere baz").stdin("world!$?").stdout("[Cc]iphertext:\s*xoqmd!\$\?\n", "ciphertext: xoqmd!$?\n").exit(0)
 
     @check("compiles")
     def withspaces(self):
         """encrypts "hello, world!" as "iekmo, vprke!" using "baz" as keyword"""
-        self.spawn("./vigenere baz").stdin("hello, world!").stdout("ciphertext:\s*iekmo, vprke!\n", "ciphertext: iekmo, vprke!\n").exit(0)
+        self.spawn("./vigenere baz").stdin("hello, world!").stdout("[Cc]iphertext:\s*iekmo, vprke!\n", "ciphertext: iekmo, vprke!\n").exit(0)
 
     @check("compiles")
     def noarg(self):
