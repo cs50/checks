@@ -11,7 +11,7 @@ class Functions(Checks):
     def prints_something(self):
         """prints output"""
         res = self.spawn("python print.py").stdout()
-        if res == "":
+        if res.strip() == "":
             raise Error("no output found")
 
     @check("prints_something")
