@@ -1,0 +1,4 @@
+*
+!*.txt
+!*.py
+#hello.py
