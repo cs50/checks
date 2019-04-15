@@ -18,6 +18,6 @@ class Functions(Checks):
     def doesnt_print_hello(self):
         """prints something other than hello, world"""
         res = self.spawn("python print.py").stdout()
-        if res == "hello, world":
+        if res.strip() == "hello, world":
             raise Error("printed hello world")
 
