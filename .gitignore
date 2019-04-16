@@ -1,3 +1,4 @@
 .*
 !.gitignore
+!.cs50.*
 __pycache__
