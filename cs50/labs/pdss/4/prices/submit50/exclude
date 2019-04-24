@@ -1,0 +1,4 @@
+*
+!*.txt
+!*.py
+#prices.py
