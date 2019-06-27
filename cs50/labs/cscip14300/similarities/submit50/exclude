@@ -1,8 +1,5 @@
-*
-!*.py
-!*.css
-!*.html
-!*.txt
-#application.py
+*.pyc
+__pycache__/
+inputs/*
 #helpers.py
 #templates/index.html
