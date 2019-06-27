@@ -1,0 +1,6 @@
+*
+!*.csv
+!*.py
+!*.css
+!*.html
+#application.py

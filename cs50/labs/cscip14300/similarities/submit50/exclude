@@ -1,0 +1,8 @@
+*
+!*.py
+!*.css
+!*.html
+!*.txt
+#application.py
+#helpers.py
+#templates/index.html
