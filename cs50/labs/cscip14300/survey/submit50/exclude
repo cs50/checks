@@ -1,0 +1,4 @@
+*.pyc
+__pycache__/
+#application.py
+#templates/form.html
