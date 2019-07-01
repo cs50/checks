@@ -1,0 +1,4 @@
+*.pyc
+__pycache__/
+flask_session/
+#application.py
