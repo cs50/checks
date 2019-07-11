@@ -36,7 +36,7 @@ class Vigenere(Checks):
     @check("exists")
     def withspaces(self):
         """encrypts "hello, world!" as "iekmo, vprke!" using "baz" as keyword"""
-        self.spawn("python vigenere.py baz").stdin("hello, world!").stdout("ciphertext:\s*iekmo, vprke!\n", "ciphertext: iekmo, vprke!\n").exit(0)
+        self.spawn("python3 vigenere.py baz").stdin("hello, world!").stdout("ciphertext:\s*iekmo, vprke!\n", "ciphertext: iekmo, vprke!\n").exit(0)
 
     @check("exists")
     def noarg(self):
