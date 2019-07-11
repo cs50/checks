@@ -3,4 +3,3 @@ Flask-Session
 passlib
 SQLAlchemy
 cs50
-werkzeug<0.15
