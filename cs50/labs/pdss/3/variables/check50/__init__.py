@@ -12,9 +12,9 @@ class Input(Checks):
     @check("exists")
     def david(self):
         """responds to name David"""
-        self.spawn("python input.py").stdin("David").stdout("hello, David", "hello, David")
+        self.spawn("python3 input.py").stdin("David").stdout("hello, David", "hello, David")
 
     @check("exists")
     def maria(self):
         """responds to name Maria"""
-        self.spawn("python input.py").stdin("Maria").stdout("hello, Maria", "hello, Maria")
+        self.spawn("python3 input.py").stdin("Maria").stdout("hello, Maria", "hello, Maria")
