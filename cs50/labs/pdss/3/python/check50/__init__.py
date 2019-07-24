@@ -11,4 +11,4 @@ class Hello(Checks):
     @check("exists")
     def hello(self):
         """says hello"""
-        self.spawn("python hello.py").stdout("hello, world", "hello, world")
+        self.spawn("python3 hello.py").stdout("hello, world", "hello, world")
