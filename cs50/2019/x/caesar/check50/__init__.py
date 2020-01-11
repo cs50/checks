@@ -47,3 +47,15 @@ class Caesar(Checks):
     def handles_no_argv(self):
         """handles lack of argv[1]"""
         self.spawn("./caesar").exit(1)
+        
+    @check("compiles")
+    def toomanyargs(self):
+        """handles argc > 2"""
+        self.spawn("./caesar 1 2 3").exit(1)
+    
+    @check("compiles")
+    def rejects_non_numeric(self):
+        """rejects non-numeric argv[1]"""
+        self.spawn("./caesar 2a!").exit(1)
+        
+  
